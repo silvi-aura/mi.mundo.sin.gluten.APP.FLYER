@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mi Mundo Sin Gluten</title>
+<meta name="description" content="Tu guía para vivir con celiaquía: qué podés comer, menús, recetas y respuestas a tus dudas.">
+<meta name="theme-color" content="#EDF2E8">
+<script>try{var _t=JSON.parse(localStorage.getItem("vsg_tema"));document.documentElement.setAttribute("data-tema",_t||"auto")}catch(e){document.documentElement.setAttribute("data-tema","auto")}</script>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Mi Mundo">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fondo:#EDF2E8; --sup:#FFFFFF; --tinta:#1D3428; --suave:#56695E; --linea:#D5DFD0;
+  --verde:#2D6A4C; --verde-osc:#214F38; --verde-txt:#2D6A4C; --hoja:#E1ECDD;
+  --maiz:#EFB22F; --maiz-claro:#FFF4D6; --sobre-maiz:#1D3428;
+  --si:#2E8B57; --ojo:#D69A00; --no:#C2453A;
+  --blanco:#FFFFFF; --oscuro:#1D3428; --velo:rgba(29,52,40,.5);
+  --alerta-bg:#FBE7E4; --ambar:#9A6B00; --ambar-t:#8A6200;
+  --eti-si-bg:#DDF0E4; --eti-si-t:#1F6B44; --eti-ojo-bg:#FFF1CC; --eti-ojo-t:#7A5500; --eti-no-bg:#FBE7E4; --eti-no-t:#A33328;
+  --mark-r:#F7C9C3; --mark-a:#FBE3A0; --mark-v:#CDE8D5;
+  --seg-top:env(safe-area-inset-top,0px); --seg-bot:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+/* ---------- Modo noche ---------- */
+html[data-tema="noche"]{
+  --fondo:#0F1713; --sup:#18231D; --tinta:#E6EFE9; --suave:#9DB0A5; --linea:#2A3A31;
+  --verde:#2F7D58; --verde-osc:#A6D9BE; --verde-txt:#6FCB9A; --hoja:#213229;
+  --maiz:#EFB22F; --maiz-claro:#2E2813;
+  --si:#4CC28A; --ojo:#E0A800; --no:#E2685C;
+  --blanco:#1E2B24; --oscuro:#2B4538; --velo:rgba(0,0,0,.65);
+  --alerta-bg:#3A1F1C; --ambar:#E0B04A; --ambar-t:#E8C26A;
+  --eti-si-bg:#1E3A2B; --eti-si-t:#7FDDA8; --eti-ojo-bg:#3B3115; --eti-ojo-t:#F0CA6A; --eti-no-bg:#3D2320; --eti-no-t:#F1A59D;
+  --mark-r:#6B2D28; --mark-a:#6B5A1F; --mark-v:#2A5A3E;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:dark){
+  html[data-tema="auto"]{
+    --fondo:#0F1713; --sup:#18231D; --tinta:#E6EFE9; --suave:#9DB0A5; --linea:#2A3A31;
+    --verde:#2F7D58; --verde-osc:#A6D9BE; --verde-txt:#6FCB9A; --hoja:#213229;
+    --maiz:#EFB22F; --maiz-claro:#2E2813;
+    --si:#4CC28A; --ojo:#E0A800; --no:#E2685C;
+    --blanco:#1E2B24; --oscuro:#2B4538; --velo:rgba(0,0,0,.65);
+    --alerta-bg:#3A1F1C; --ambar:#E0B04A; --ambar-t:#E8C26A;
+    --eti-si-bg:#1E3A2B; --eti-si-t:#7FDDA8; --eti-ojo-bg:#3B3115; --eti-ojo-t:#F0CA6A; --eti-no-bg:#3D2320; --eti-no-t:#F1A59D;
+    --mark-r:#6B2D28; --mark-a:#6B5A1F; --mark-v:#2A5A3E;
+    color-scheme:dark;
+  }
+}
+html{font-size:17px;-webkit-text-size-adjust:100%}
+html[data-letra="1"]{font-size:19px}
+html[data-letra="2"]{font-size:21px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fondo);color:var(--tinta);font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.6;-webkit-tap-highlight-color:transparent}
+body.fijo{overflow:hidden}
+h1,h2,h3{font-family:'Lora',Georgia,'Times New Roman',serif;line-height:1.25;margin:0;font-weight:600}
+p{margin:0 0 .8rem}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--maiz);outline-offset:2px}
+[hidden]{display:none!important}
+svg{width:1.3em;height:1.3em;flex:none}
+
+/* ---------- Cabecera ---------- */
+.top{position:sticky;top:0;z-index:20;background:var(--fondo);padding:calc(var(--seg-top) + .6rem) 1.1rem .5rem;display:flex;align-items:center;justify-content:space-between;max-width:560px;margin:0 auto}
+.marca{display:flex;align-items:center;gap:.55rem;font-family:'Lora',Georgia,serif;font-weight:600;font-size:1.05rem;color:var(--verde-osc)}
+.marca img{width:32px;height:32px;border-radius:9px}
+.hdr-der{display:flex;gap:.5rem;align-items:center}
+.campana,.btn-tema{position:relative;width:46px;height:46px;border-radius:50%;border:0;background:var(--sup);display:grid;place-items:center;color:var(--verde-osc);cursor:pointer}
+.campana .punto{position:absolute;top:9px;right:10px;width:11px;height:11px;border-radius:50%;background:var(--no);border:2px solid var(--sup)}
+
+main{max-width:560px;margin:0 auto;padding:.3rem 1.1rem calc(var(--seg-bot) + 10rem)}
+
+/* ---------- Barra de abajo ---------- */
+.tabs{position:fixed;bottom:0;left:0;right:0;z-index:30;background:var(--sup);border-top:1px solid var(--linea);display:flex;justify-content:center;padding:.3rem .25rem calc(var(--seg-bot) + .3rem)}
+.tabs-in{display:flex;width:100%;max-width:560px}
+.tab{flex:1;background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:.72rem;color:var(--suave);padding:.35rem 0;min-height:54px;cursor:pointer}
+.tab svg{width:25px;height:25px}
+.tab[aria-current="page"]{color:var(--verde-txt);font-weight:600}
+
+/* ---------- Botón ¿Otra duda? ---------- */
+.fab{position:fixed;right:max(1rem,calc(50% - 280px + 1rem));bottom:calc(var(--seg-bot) + 5.4rem);z-index:25;background:var(--maiz);color:var(--sobre-maiz);border:0;border-radius:999px;padding:.7rem 1.1rem;font-weight:600;box-shadow:0 6px 18px rgba(29,52,40,.25);display:flex;gap:.45rem;align-items:center;cursor:pointer}
+
+/* ---------- Botones y campos ---------- */
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:.45rem;font-weight:600;border-radius:14px;padding:.8rem 1.2rem;border:0;cursor:pointer;min-height:50px;text-decoration:none;text-align:center;line-height:1.3}
+.btn.prim{background:var(--verde);color:#fff}
+.btn.sec{background:var(--hoja);color:var(--verde-osc)}
+.btn.maiz{background:var(--maiz);color:var(--sobre-maiz)}
+.btn.ancho{width:100%}
+.btn:disabled{opacity:.6;cursor:default}
+.campo{width:100%;padding:.8rem .9rem;border-radius:12px;border:1.5px solid var(--linea);background:var(--blanco);font-size:1rem;margin:.3rem 0 .9rem}
+textarea.campo{min-height:5rem;resize:vertical}
+label.et{display:block;font-weight:500;margin-top:.2rem}
+.chico{font-size:.88rem;color:var(--suave)}
+
+/* ---------- Inicio ---------- */
+.saludo h1{font-size:1.8rem;margin:.5rem 0 .1rem}
+.saludo p{color:var(--suave);margin:0}
+.consulta{background:var(--verde);color:#fff;border-radius:24px;padding:1.25rem 1.1rem 1rem;margin:1.1rem 0 1.3rem}
+.consulta h2{font-size:1.65rem;color:#fff}
+.consulta .ayuda{display:block;margin:.25rem 0 .75rem;color:#D3E6D9;font-size:.92rem}
+.buscador{width:100%;font-size:1.08rem;padding:.9rem 1rem;border-radius:14px;border:0;background:var(--blanco);color:var(--tinta)}
+.resultados{margin-top:.75rem;display:flex;flex-direction:column;gap:.55rem}
+.veredicto{background:var(--blanco);color:var(--tinta);border-radius:16px;padding:.85rem .9rem;display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start}
+.veredicto strong{display:block;line-height:1.3}
+.veredicto p{margin:.25rem 0 0;font-size:.9rem;color:var(--suave)}
+.sema{display:flex;flex-direction:column;gap:5px;background:#1D3428;border-radius:13px;padding:6px}
+.sema i{width:17px;height:17px;border-radius:50%;background:#3E5247;display:block}
+.sema[data-e="no"] i:nth-child(1){background:var(--no);box-shadow:0 0 9px var(--no)}
+.sema[data-e="ojo"] i:nth-child(2){background:var(--ojo);box-shadow:0 0 9px var(--ojo)}
+.sema[data-e="si"] i:nth-child(3){background:#3DBA74;box-shadow:0 0 9px #3DBA74}
+.estado{display:block;font-weight:600;font-size:.95rem}
+.estado.si{color:var(--si)} .estado.ojo{color:var(--ambar)} .estado.no{color:var(--no)}
+.sinres{background:var(--blanco);color:var(--tinta);border-radius:16px;padding:.9rem}
+.leyenda{margin:.8rem 0 0;font-size:.8rem;color:#D3E6D9;display:flex;flex-wrap:wrap;gap:.2rem .9rem;align-items:center}
+.leyenda span{display:inline-flex;align-items:center;gap:.35rem}
+.pun{width:10px;height:10px;border-radius:50%;display:inline-block}
+.pun.si{background:#3DBA74} .pun.ojo{background:var(--ojo)} .pun.no{background:var(--no)}
+.hoy{background:var(--maiz-claro);border-radius:20px;padding:1rem 1.1rem;margin:1.2rem 0}
+.hoy h2{font-size:1rem;font-style:italic;font-weight:500;color:var(--ambar-t);margin-bottom:.25rem}
+.hoy p{font-family:'Lora',Georgia,serif;font-size:1.15rem;line-height:1.45;margin:0}
+.novedad-home{display:flex;gap:.7rem;align-items:center;width:100%;background:var(--sup);border:1.5px solid var(--maiz);border-radius:16px;padding:.8rem 1rem;text-align:left;cursor:pointer;margin:.2rem 0}
+.novedad-home b{display:block}
+.instalar{background:var(--sup);border-radius:16px;padding:.9rem 1rem;margin:1rem 0;border:1px solid var(--linea)}
+.instalar p{margin:0 0 .6rem}
+.link-chico{display:block;width:100%;background:none;border:0;color:var(--suave);text-decoration:underline;font-size:.88rem;margin-top:.4rem;min-height:40px;cursor:pointer}
+
+/* ---------- Listas ---------- */
+.cab{margin:.6rem 0 1rem}
+.cab h1{font-size:1.8rem}
+.cab p{color:var(--suave);margin:.2rem 0 0}
+.bloque{margin:1.7rem 0}
+.bloque > h2{font-size:1.3rem;margin-bottom:.6rem}
+.lista{background:var(--sup);border-radius:18px;overflow:hidden;border:1px solid var(--linea)}
+.fila{display:flex;align-items:center;gap:.8rem;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--linea);padding:.9rem 1rem;cursor:pointer;min-height:58px;text-decoration:none;color:inherit}
+.fila:last-child{border-bottom:0}
+.fila .txt{flex:1;min-width:0}
+.fila .t{display:block;font-weight:600;line-height:1.35}
+.fila .r{display:block;font-size:.85rem;color:var(--suave);line-height:1.4;margin-top:2px}
+.fila .ico{color:var(--suave);display:flex}
+.preg{border-bottom:1px solid var(--linea)}
+.preg:last-child{border-bottom:0}
+.preg summary{list-style:none;cursor:pointer;padding:.9rem 1rem;font-weight:600;display:flex;justify-content:space-between;gap:.8rem;line-height:1.35}
+.preg summary::-webkit-details-marker{display:none}
+.preg summary::after{content:'+';font-size:1.3rem;line-height:1;color:var(--verde)}
+.preg[open] summary::after{content:'–'}
+.preg p{padding:0 1rem .9rem;margin:0}
+
+/* ---------- Lector (pantalla completa) ---------- */
+.lector{position:fixed;inset:0;z-index:50;background:var(--fondo);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.lector-top{position:sticky;top:0;z-index:2;background:var(--fondo);display:flex;justify-content:space-between;align-items:center;padding:calc(var(--seg-top) + .5rem) 1rem .5rem;max-width:560px;margin:0 auto}
+.volver{display:flex;align-items:center;gap:.2rem;background:var(--sup);border:0;border-radius:999px;padding:.55rem 1rem .55rem .7rem;font-weight:600;color:var(--verde-osc);cursor:pointer;min-height:46px}
+.letra{background:var(--sup);border:0;border-radius:999px;min-width:46px;min-height:46px;font-family:'Lora',Georgia,serif;font-weight:600;color:var(--verde-osc);cursor:pointer}
+.lector-cuerpo{max-width:560px;margin:0 auto;padding:.3rem 1.2rem calc(var(--seg-bot) + 3rem)}
+.articulo h1{font-size:1.65rem;margin:.4rem 0 1rem}
+.articulo h2{font-size:1.25rem;margin:1.6rem 0 .6rem}
+.articulo h3{font-size:1.12rem;margin:1.5rem 0 .4rem;color:var(--verde-osc)}
+.articulo ul,.articulo ol{padding-left:1.25rem;margin:0 0 .9rem}
+.articulo li{margin-bottom:.35rem}
+.articulo .intro{color:var(--suave)}
+.nota{background:var(--hoja);border-radius:14px;padding:.85rem 1rem;margin:1.2rem 0}
+.alerta{background:var(--alerta-bg);border-left:5px solid var(--no);border-radius:10px;padding:.85rem 1rem;margin:1rem 0}
+.mas{margin-top:1.6rem}
+.legal{font-size:.8rem;color:var(--suave);margin-top:1.2rem}
+.panel{background:var(--sup);border-radius:18px;padding:1rem;border:1px solid var(--linea);margin:1rem 0}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:.45rem;margin:.4rem 0 1rem}
+.chip{border:1.5px solid var(--linea);background:var(--blanco);border-radius:999px;padding:.45rem .9rem;font-size:.92rem;cursor:pointer;min-height:42px}
+.chip[aria-pressed="true"]{background:var(--verde);color:#fff;border-color:var(--verde)}
+
+/* menús */
+.comida{display:grid;grid-template-columns:5.6rem 1fr;gap:.7rem;padding:.85rem 0;border-bottom:1px solid var(--linea)}
+.comida:last-child{border-bottom:0}
+.comida b{color:var(--verde-osc);font-size:.88rem;padding-top:.1rem}
+
+/* recetas */
+.meta{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;color:var(--suave);font-size:.92rem;margin-bottom:.4rem}
+.check{display:flex;gap:.75rem;align-items:flex-start;padding:.65rem 0;border-bottom:1px solid var(--linea);cursor:pointer}
+.check:last-child{border-bottom:0}
+.check input{width:23px;height:23px;accent-color:var(--verde);flex:none;margin:.15rem 0 0}
+.check.hecho span{text-decoration:line-through;color:var(--suave)}
+.check .borrar{margin-left:auto;background:none;border:0;color:var(--suave);cursor:pointer;padding:0 .2rem;font-size:1.2rem;line-height:1}
+.pasos{counter-reset:paso;list-style:none;padding:0!important}
+.pasos li{counter-increment:paso;display:grid;grid-template-columns:2.1rem 1fr;gap:.6rem;margin-bottom:.8rem}
+.pasos li::before{content:counter(paso);width:2rem;height:2rem;border-radius:50%;background:var(--hoja);color:var(--verde-osc);font-weight:600;display:grid;place-items:center;font-size:.9rem}
+
+/* diario */
+.registro{background:var(--sup);border-radius:16px;padding:.8rem 1rem;border:1px solid var(--linea);margin-bottom:.6rem}
+.registro .fecha{font-weight:600}
+.registro .det{font-size:.9rem;color:var(--suave);margin:.15rem 0 0}
+.registro .acc{display:flex;justify-content:flex-end}
+.link{background:none;border:0;color:var(--no);font-size:.85rem;cursor:pointer;padding:.3rem 0;text-decoration:underline}
+.resumen{background:var(--hoja);border-radius:14px;padding:.75rem 1rem;margin:.6rem 0 1rem}
+
+/* tarjeta para el mozo */
+.mozo{background:var(--verde);color:#fff;border-radius:24px;padding:1.5rem 1.3rem;font-family:'Lora',Georgia,serif;font-size:1.32rem;line-height:1.5;margin:1rem 0}
+
+
+/* ---------- Novedades de la app ---------- */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:1.1rem 0}
+.tile{background:var(--sup);border:1.5px solid var(--linea);border-radius:20px;padding:.9rem .9rem 1rem;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:.35rem;min-height:140px;color:var(--tinta)}
+.tile .ti{width:42px;height:42px;border-radius:13px;background:var(--hoja);color:var(--verde-osc);display:grid;place-items:center}
+.tile .ti svg{width:24px;height:24px}
+.tile b{font-family:'Lora',Georgia,serif;font-size:1.05rem;line-height:1.25;font-weight:600}
+.tile .s{font-size:.82rem;color:var(--suave);line-height:1.35}
+.tile.dia{background:var(--verde);border-color:var(--verde);color:#fff}
+.tile.dia .ti{background:rgba(255,255,255,.16);color:#fff}
+.tile.dia .s{color:#D3E6D9}
+.nuevo{background:var(--maiz);color:var(--sobre-maiz);font-size:.7rem;font-weight:600;border-radius:999px;padding:.1rem .55rem;margin-left:.5rem;vertical-align:middle}
+.prox{display:block;width:100%;text-align:left;background:var(--oscuro);color:#fff;border:0;border-radius:22px;padding:1.1rem 1.1rem 1rem;margin:1.2rem 0;cursor:pointer}
+.prox-top{display:flex;align-items:center;gap:.85rem}
+.prox-n{font-family:'Lora',Georgia,serif;font-size:3.2rem;font-weight:700;line-height:1;color:var(--maiz)}
+.prox-l{font-size:.88rem;color:#D3E6D9;line-height:1.35}
+.prox-t{display:block;font-family:'Lora',Georgia,serif;font-size:1.3rem;font-weight:600;margin:.75rem 0 .2rem;line-height:1.25}
+.prox-s{display:block;font-size:.92rem;color:#D3E6D9}
+.prox-c{display:inline-block;margin-top:.7rem;background:rgba(239,178,47,.18);color:var(--maiz);border-radius:999px;padding:.3rem .85rem;font-size:.85rem;font-weight:500}
+.cuenta{display:flex;align-items:center;gap:.8rem;margin:.4rem 0 .8rem}
+.cuenta .n{font-family:'Lora',Georgia,serif;font-size:3.4rem;font-weight:700;line-height:1;color:var(--verde-txt)}
+
+.tile{position:relative}
+.tile.mini{min-height:128px}
+.tile.ancha{grid-column:1 / -1;min-height:0}
+.eti{display:inline-block;font-size:.72rem;font-weight:600;border-radius:999px;padding:.1rem .6rem;margin-left:.45rem;white-space:nowrap;vertical-align:middle;font-family:'Poppins',system-ui,sans-serif}
+.eti.si{background:var(--eti-si-bg);color:var(--eti-si-t)} .eti.ojo{background:var(--eti-ojo-bg);color:var(--eti-ojo-t)} .eti.no{background:var(--eti-no-bg);color:var(--eti-no-t)}
+.check .eti{margin-left:auto;flex:none}
+.check .eti + .borrar{margin-left:.5rem}
+.check.hecho .eti{text-decoration:none}
+
+/* revisá una etiqueta */
+mark{border-radius:5px;padding:0 3px;color:var(--tinta)}
+mark.r{background:var(--mark-r)} mark.a{background:var(--mark-a)} mark.v{background:var(--mark-v)}
+.etq-texto{background:var(--blanco);border:1px solid var(--linea);border-radius:14px;padding:.85rem .95rem;line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere}
+.hallazgo{display:flex;gap:.7rem;padding:.6rem 0;border-bottom:1px solid var(--linea)}
+.hallazgo:last-child{border-bottom:0}
+.hallazgo .pun{margin-top:.55rem;flex:none}
+.hallazgo strong{display:block}
+.hallazgo p{margin:.1rem 0 0;font-size:.9rem;color:var(--suave)}
+.veredicto.panel{box-shadow:none}
+
+/* mi intestino, mes a mes */
+.dia-grande{display:flex;align-items:center;gap:.9rem;margin:.4rem 0 1rem}
+.dia-grande .n{font-family:'Lora',Georgia,serif;font-size:4.2rem;font-weight:700;line-height:1;color:var(--verde-txt)}
+.dia-grande .t{font-size:1.02rem;color:var(--suave);line-height:1.3}
+.villi rect.v{fill:var(--verde)}
+.villi rect.b{fill:var(--linea)}
+.festejo{background:var(--maiz-claro);border:1.5px solid var(--maiz);border-radius:16px;padding:.9rem 1rem;margin:1rem 0}
+.ruta{list-style:none;padding:0!important;margin:1rem 0}
+.hito{display:grid;grid-template-columns:2.2rem 1fr;gap:.8rem;padding-bottom:1.2rem;position:relative}
+.hito::before{content:'';position:absolute;left:1.05rem;top:2.2rem;bottom:0;width:2px;background:var(--linea)}
+.hito:last-child::before{display:none}
+.hito .pto{width:2.1rem;height:2.1rem;border-radius:50%;background:var(--sup);border:2px solid var(--linea);display:grid;place-items:center;font-size:.9rem;font-weight:600;color:var(--suave)}
+.hito.hecho .pto{background:var(--verde);border-color:var(--verde);color:#fff}
+.hito.hecho::before{background:var(--verde)}
+.hito.sig .pto{border-color:var(--maiz);background:var(--maiz-claro);color:var(--tinta)}
+.hito h3{margin:0 0 .15rem;font-size:1.05rem;color:var(--tinta)}
+.hito p{margin:0;font-size:.92rem;color:var(--suave)}
+.hito.bloq h3{color:var(--suave)}
+
+/* ---------- Hoja que sube desde abajo ---------- */
+.velo{position:fixed;inset:0;z-index:60;background:var(--velo);display:flex;align-items:flex-end;justify-content:center}
+.hoja{background:var(--sup);width:100%;max-width:560px;border-radius:24px 24px 0 0;padding:1.4rem 1.2rem calc(var(--seg-bot) + 1.4rem);max-height:92vh;overflow-y:auto;animation:sube .22s ease-out}
+.hoja h2{font-size:1.4rem;margin-bottom:.5rem}
+.hoja h3{font-size:1.08rem;margin:1.3rem 0 .2rem}
+.hoja .cerrar{float:right;background:var(--hoja);border:0;border-radius:50%;width:40px;height:40px;cursor:pointer;color:var(--verde-osc);font-size:1.3rem;line-height:1}
+.msg{margin:.7rem 0 0;font-size:.92rem}
+.msg.error{color:var(--no)} .msg.ok{color:var(--si)}
+@keyframes sube{from{transform:translateY(30px);opacity:.4}to{transform:none;opacity:1}}
+
+/* ---------- Bienvenida ---------- */
+.bienvenida{position:fixed;inset:0;z-index:70;background:var(--fondo);overflow-y:auto;padding:calc(var(--seg-top) + 2rem) 1.3rem calc(var(--seg-bot) + 2rem)}
+.bienvenida-in{max-width:460px;margin:0 auto}
+.bienvenida .logo{width:84px;height:84px;border-radius:22px;display:block;margin-bottom:1.2rem}
+.bienvenida h1{font-size:2.1rem;margin-bottom:.5rem;color:var(--verde-osc)}
+.bienvenida p.bajada{font-size:1.05rem;color:var(--suave);margin-bottom:1.6rem}
+
+/* ---------- Aviso flotante ---------- */
+.toast{position:fixed;left:50%;bottom:calc(var(--seg-bot) + 6rem);transform:translateX(-50%);background:var(--oscuro);color:#fff;padding:.7rem 1.1rem;border-radius:999px;z-index:80;font-size:.92rem;width:max-content;max-width:90vw;text-align:center}
+
+@media (prefers-reduced-motion:reduce){.hoja{animation:none}}
+</style>
+</head>
+<body>
+<!-- ══════════ ACCESO CON CÓDIGO · CANAL MERCADO LIBRE / WHATSAPP ══════════ -->
+<style>
+#gate{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;overflow-y:auto;
+  padding:calc(24px + env(safe-area-inset-top,0px)) 18px calc(24px + env(safe-area-inset-bottom,0px));
+  background:var(--fondo,#EDF2E8);color:var(--tinta,#1D3428);font-family:Poppins,system-ui,-apple-system,sans-serif;line-height:1.5}
+#gate.off{display:none}
+html.gate-on,html.gate-on body{overflow:hidden}
+#gate .g-box{width:100%;max-width:410px;margin:auto;text-align:center;background:var(--sup,#fff);border:1.5px solid var(--verde,#2D6A4C);border-radius:20px;padding:30px 22px 24px;position:relative}
+#gate .g-logo{width:72px;height:72px;border-radius:18px;display:block;margin:0 auto}
+#gate .g-pre{margin-top:10px;font-size:14px;font-weight:600;color:var(--verde-txt,#2D6A4C)}
+#gate h1{font-family:Lora,Georgia,serif;font-weight:700;color:var(--verde-osc,#214F38);font-size:32px;line-height:1.15;margin:2px 0 10px}
+#gate .g-txt{font-size:17px;margin:0 0 18px;color:var(--tinta,#1D3428)}
+#gate input{display:block;width:100%;box-sizing:border-box;min-height:58px;padding:12px 14px;border:1.5px solid var(--linea,#D5DFD0);border-radius:12px;background:var(--blanco,#fff);
+  color:var(--tinta,#1D3428);font:600 22px/1.2 Poppins,system-ui,sans-serif;text-align:center;letter-spacing:.06em;text-transform:uppercase;position:relative}
+#gate input::placeholder{color:var(--suave,#7A8B80);letter-spacing:.04em}
+#gate input:focus{outline:3px solid var(--maiz,#EFB22F);outline-offset:1px;border-color:var(--verde,#2D6A4C)}
+#gate .g-btn{display:block;width:100%;min-height:56px;margin-top:12px;border:0;border-radius:14px;background:var(--verde,#2D6A4C);color:#fff;
+  font:600 19px Poppins,system-ui,sans-serif;cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent}
+#gate .g-btn:active{transform:scale(.98)}
+#gate .g-btn[disabled]{opacity:.6;cursor:wait}
+#gate .g-msg{min-height:24px;margin-top:12px;font-size:16px}
+#gate .g-msg.warn{color:var(--no,#C2453A)}
+#gate .g-msg.info{color:var(--verde-txt,#2D6A4C)}
+#gate .g-tiny{margin:14px 0 0;font-size:14px;color:var(--suave,#56695E)}
+#gate .g-ios{display:none;margin-top:16px;padding:12px 14px;text-align:left;font-size:15px;background:var(--maiz-claro,#FFF4D6);border-left:5px solid var(--maiz,#EFB22F);border-radius:0 10px 10px 0;position:relative}
+#gate .g-ios.ver{display:block}
+@media (prefers-reduced-motion:reduce){#gate .g-btn:active{transform:none}}
+</style>
+<div id="gate" role="dialog" aria-modal="true" aria-labelledby="gTitulo">
+  <div class="g-box">
+    <img class="g-logo" src="icon-192.png" alt="">
+    <div class="g-pre">Acceso privado</div>
+    <h1 id="gTitulo">Mi Mundo Sin Gluten</h1>
+    <p class="g-txt">Escribí el <b>código de acceso</b> que te mandó Silvi para entrar a tu app.</p>
+    <input id="gCode" type="text" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="NOMBRE-XXXXX" aria-label="Tu código de acceso">
+    <button class="g-btn" id="gBtn" type="button">Entrar</button>
+    <div class="g-msg" id="gMsg" role="status" aria-live="polite"></div>
+    <p class="g-tiny">Tu código es personal y queda asociado a tu celular. No importa si lo escribís en mayúscula o minúscula.</p>
+    <div class="g-ios" id="gIos"><b>Si tenés iPhone:</b> primero instalá la app (tocá Compartir y después <b>Agregar a inicio</b>). Abrila desde el ícono y escribí el código ahí adentro.</div>
+  </div>
+</div>
+<script>
+(function () {
+'use strict';
+/* Proyecto de Firebase del canal con código de Mi Mundo Sin Gluten */
+const FB = { apiKey: 'AIzaSyCBbM7x6VMk2bLq7MCUZuqnbxFIbRdjrck', projectId: 'mi-mundo-sin-gluten' };
+const DBURL = `https://firestore.googleapis.com/v1/projects/${FB.projectId}/databases/(default)/documents`;
+/* La misma SALT y ROUNDS tienen que estar en el panel de códigos */
+const SALT = 'mi-mundo-sin-gluten-2026', ROUNDS = 20000;
+const ACC_KEY = 'miMundoSinGluten.acceso.v1', DEV_KEY = 'miMundoSinGluten.dispositivo.v1';
+const RRH = (function () {
+  const K = [0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+  const rotr = (x, n) => (x >>> n) | (x << (32 - n));
+  function bytesOf(s) { const u = unescape(encodeURIComponent(s)), o = []; for (let i = 0; i < u.length; i++) o.push(u.charCodeAt(i)); return o; }
+  function sha256(bytes) {
+    let h = [0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+    const p = bytes.slice(), bl = bytes.length * 8; p.push(0x80); while (p.length % 64 !== 56) p.push(0);
+    for (const v of [Math.floor(bl / 4294967296), bl >>> 0]) p.push((v >>> 24) & 255, (v >>> 16) & 255, (v >>> 8) & 255, v & 255);
+    const w = new Array(64);
+    for (let i = 0; i < p.length; i += 64) {
+      for (let t = 0; t < 16; t++) w[t] = (p[i + 4*t] << 24) | (p[i + 4*t + 1] << 16) | (p[i + 4*t + 2] << 8) | p[i + 4*t + 3];
+      for (let t = 16; t < 64; t++) { const s0 = rotr(w[t-15], 7) ^ rotr(w[t-15], 18) ^ (w[t-15] >>> 3), s1 = rotr(w[t-2], 17) ^ rotr(w[t-2], 19) ^ (w[t-2] >>> 10); w[t] = (w[t-16] + s0 + w[t-7] + s1) | 0; }
+      let [a, b, c, d, e, f, g, hh] = h;
+      for (let t = 0; t < 64; t++) { const S1 = rotr(e, 6) ^ rotr(e, 11) ^ rotr(e, 25), ch = (e & f) ^ (~e & g), t1 = (hh + S1 + ch + K[t] + w[t]) | 0, S0 = rotr(a, 2) ^ rotr(a, 13) ^ rotr(a, 22), mj = (a & b) ^ (a & c) ^ (b & c), t2 = (S0 + mj) | 0; hh = g; g = f; f = e; e = (d + t1) | 0; d = c; c = b; b = a; a = (t1 + t2) | 0; }
+      h = [(h[0]+a)|0,(h[1]+b)|0,(h[2]+c)|0,(h[3]+d)|0,(h[4]+e)|0,(h[5]+f)|0,(h[6]+g)|0,(h[7]+hh)|0];
+    }
+    const o = []; for (const v of h) o.push((v >>> 24) & 255, (v >>> 16) & 255, (v >>> 8) & 255, v & 255); return o;
+  }
+  const hex = b => b.map(x => x.toString(16).padStart(2, '0')).join('');
+  const norm = c => String(c || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+  function huella(code, salt, rounds) {
+    const n = norm(code); if (!n) return '';
+    let cur = sha256(bytesOf(salt + ':' + n));
+    for (let i = 0; i < rounds; i++) cur = sha256(cur.concat(bytesOf(n + salt)));
+    return hex(cur);
+  }
+  return { sha256, bytesOf, hex, norm, huella };
+})();
+const gate = document.getElementById('gate'), inp = document.getElementById('gCode'),
+      btn = document.getElementById('gBtn'), msg = document.getElementById('gMsg'), ios = document.getElementById('gIos');
+const accGet = () => { try { return JSON.parse(localStorage.getItem(ACC_KEY) || 'null'); } catch (e) { return null; } };
+const esIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (/macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+const instalada = window.navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+function setMsg(t, info) { msg.textContent = t || ''; msg.className = 'g-msg ' + (t ? (info ? 'info' : 'warn') : ''); }
+function abrirGate(t) {
+  gate.classList.remove('off'); document.documentElement.classList.add('gate-on');
+  if (esIOS && !instalada) ios.classList.add('ver');
+  setMsg(t || '');
+}
+function cerrarGate() { gate.classList.add('off'); document.documentElement.classList.remove('gate-on'); }
+function devId() {
+  let d = null; try { d = localStorage.getItem(DEV_KEY); } catch (e) { }
+  if (!d) {
+    const a = new Uint8Array(16); try { (window.crypto || window.msCrypto).getRandomValues(a); } catch (e) { for (let i = 0; i < 16; i++) a[i] = Math.floor(Math.random() * 256); }
+    d = Array.from(a, x => x.toString(16).padStart(2, '0')).join('') + Date.now().toString(36);
+    try { localStorage.setItem(DEV_KEY, d); } catch (e) { }
+  }
+  return d;
+}
+async function fsGet(h) {
+  const r = await fetch(`${DBURL}/codigos/${h}?key=${FB.apiKey}`, { cache: 'no-store' });
+  if (r.status === 404) return { nf: true };
+  if (!r.ok) throw new Error('http ' + r.status);
+  const j = await r.json(), f = j.fields || {};
+  return { updateTime: j.updateTime, active: !!(f.active && f.active.booleanValue === true), max: +((f.max && f.max.integerValue) || 0),
+    devices: ((f.devices && f.devices.arrayValue && f.devices.arrayValue.values) || []).map(v => v.stringValue) };
+}
+async function fsClaim(h, cur, dev) {
+  const vals = cur.devices.concat([dev]).map(s => ({ stringValue: s }));
+  const r = await fetch(`${DBURL}/codigos/${h}?updateMask.fieldPaths=devices&currentDocument.updateTime=${encodeURIComponent(cur.updateTime)}&key=${FB.apiKey}`,
+    { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ fields: { devices: { arrayValue: { values: vals } } } }) });
+  return r.ok;
+}
+async function gateCheck(code) {
+  const h = RRH.huella(code, SALT, ROUNDS), dev = devId();
+  let cur = await fsGet(h);
+  if (cur.nf) return { ok: false, why: 'nf' };
+  if (!cur.active) return { ok: false, why: 'off' };
+  for (let intento = 0; intento < 2; intento++) {
+    if (cur.devices.includes(dev)) return { ok: true, h, dev };
+    if (cur.devices.length >= cur.max) return { ok: false, why: 'full' };
+    if (await fsClaim(h, cur, dev)) return { ok: true, h, dev };
+    cur = await fsGet(h); if (cur.nf || !cur.active) return { ok: false, why: cur.nf ? 'nf' : 'off' };
+  }
+  return { ok: false, why: 'full' };
+}
+const GMSG = {
+  nf: 'Ese código no es válido. Revisalo y probá de nuevo.',
+  off: 'Este código ya no está activo. Escribile a Silvi.',
+  full: 'Este código ya está en uso en otro celular. Si cambiaste de teléfono, escribile a Silvi y te lo libera.'
+};
+let ocupado = false;
+async function entrar() {
+  if (ocupado) return;
+  const code = inp.value || '';
+  if (!RRH.norm(code)) { setMsg('Escribí tu código para entrar.'); inp.focus(); return; }
+  ocupado = true; btn.disabled = true; btn.textContent = 'Verificando…'; setMsg('Verificando tu código…', true);
+  await new Promise(r => setTimeout(r, 30));
+  let res;
+  try { res = await gateCheck(code); }
+  catch (e) { res = null; setMsg('No pudimos verificar tu código. Revisá tu conexión a internet y probá de nuevo.'); }
+  ocupado = false; btn.disabled = false; btn.textContent = 'Entrar';
+  if (!res) return;
+  if (res.ok) {
+    try { localStorage.setItem(ACC_KEY, JSON.stringify({ h: res.h, dev: res.dev, t: Date.now() })); } catch (e) { }
+    setMsg(''); inp.value = ''; cerrarGate();
+  } else setMsg(GMSG[res.why]);
+}
+btn.addEventListener('click', entrar);
+inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); entrar(); } });
+/* Arranque: si ya entró antes en este celular, la app abre directo (también sin internet) */
+if (accGet()) cerrarGate(); else abrirGate();
+/* Con internet, se revisa que el código siga activo y asignado a este celular */
+window.addEventListener('load', async () => {
+  const a = accGet(); if (!a) return;
+  let cur; try { cur = await fsGet(a.h); } catch (e) { return; }
+  const bad = cur.nf || !cur.active || !cur.devices.includes(a.dev);
+  if (bad) {
+    try { localStorage.removeItem(ACC_KEY); } catch (e) { }
+    abrirGate((cur.nf || !cur.active) ? 'Tu acceso ya no está activo. Escribile a Silvi.' : 'Tu acceso fue liberado. Volvé a escribir tu código para entrar.');
+  }
+});
+})();
+</script>
+
+
+<header class="top">
+  <div class="marca"><img src="icon-192.png" alt=""><span>Mi Mundo Sin Gluten</span></div>
+  <div class="hdr-der">
+    <button class="btn-tema" id="btnTema" aria-label="Cambiar a modo noche"></button>
+  <button class="campana" id="btnCampana" aria-label="Novedades">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>
+    <span class="punto" id="puntoCampana" hidden></span>
+  </button>
+  </div>
+</header>
+
+<main id="vista"></main>
+
+<button class="fab" id="btnDuda">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+  ¿Otra duda?
+</button>
+
+<nav class="tabs" aria-label="Secciones">
+  <div class="tabs-in" id="tabs"></div>
+</nav>
+
+<div class="lector" id="lector" hidden role="dialog" aria-modal="true">
+  <div class="lector-top">
+    <button class="volver" id="btnVolver">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
+      Volver
+    </button>
+    <button class="letra" id="btnLetra" aria-label="Cambiar el tamaño de la letra">Aa</button>
+  </div>
+  <div class="lector-cuerpo" id="lectorCuerpo"></div>
+</div>
+
+<div class="velo" id="velo" hidden>
+  <div class="hoja" id="hoja" role="dialog" aria-modal="true"></div>
+</div>
+
+<div class="bienvenida" id="bienvenida" hidden></div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="config.js"></script>
+<script src="contenido.js"></script>
+<script>
+(function () {
+'use strict';
+
+/* ================== BASE ================== */
+var C = window.CONTENIDO || {};
+var CFG = window.CONFIG || {};
+var MAIL = CFG.MAIL_CONTACTO || '';
+['novedades','tarjetas','semaforo','aprender','comer','vivir','faq','menus','recetas','cocinaSegura','listaBase']
+  .forEach(function (k) { if (!Array.isArray(C[k])) C[k] = []; });
+
+var LS = {
+  get: function (k, d) { try { var v = localStorage.getItem('vsg_' + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set: function (k, v) { try { localStorage.setItem('vsg_' + k, JSON.stringify(v)); } catch (e) {} }
+};
+function $(s, r) { return (r || document).querySelector(s); }
+function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+function norm(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[¿?¡!.,;:]/g, ' ').replace(/\s+/g, ' ').trim(); }
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+function byId(arr, id) { for (var i = 0; i < arr.length; i++) if (arr[i].id === id) return arr[i]; return null; }
+function visible(it) { return !it.desde || it.desde <= hoyISO(); }
+function vis(arr) { return arr.filter(visible); }
+function diasPara(iso) { var d = new Date(iso + 'T00:00:00'), t = new Date(); t.setHours(0, 0, 0, 0); return Math.round((d - t) / 86400000); }
+function diasDesde(iso) { return -diasPara(iso); }
+function esNuevo(it) { if (!it.desde) return false; var n = diasDesde(it.desde); return n >= 0 && n <= 14; }
+function fechaCorta(iso) { try { return new Date(iso + 'T12:00:00').toLocaleDateString('es-AR', { day: 'numeric', month: 'long' }); } catch (e) { return iso; } }
+function proximos() {
+  var out = [];
+  [['aprender', 'aprender'], ['comer', 'comer'], ['vivir', 'vivir'], ['menu', 'menus'], ['receta', 'recetas']].forEach(function (p) {
+    (C[p[1]] || []).forEach(function (it) { if (it.desde && it.desde > hoyISO() && !it.sinAdelanto) out.push({ tipo: p[0], it: it }); });
+  });
+  out.sort(function (a, b) { return a.it.desde < b.it.desde ? -1 : a.it.desde > b.it.desde ? 1 : 0; });
+  return out;
+}
+function hoyISO() { var d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+function fechaLinda(iso) { try { return new Date(iso + 'T12:00:00').toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' }); } catch (e) { return iso; } }
+function diaDelAnio() { var d = new Date(); return Math.floor((d - new Date(d.getFullYear(), 0, 0)) / 86400000); }
+
+var ICO = {
+  inicio: '<path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1H15v-6H9v6H4.5a1 1 0 0 1-1-1z"/>',
+  aprender: '<path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20v-3"/><path d="M8 7.5h8M8 11h6"/>',
+  comer: '<path d="M7 3v7M4.5 3v4.5a2.5 2.5 0 0 0 5 0V3M7 10v11"/><path d="M17.5 21V3c-2.2 1.8-3 5-3 8.5h3"/>',
+  vivir: '<path d="M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.3a4.2 4.2 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z"/>',
+  cosas: '<rect x="4" y="7.5" width="16" height="13" rx="2.5"/><path d="M9 7.5V6a3 3 0 0 1 6 0v1.5"/>',
+  cand: '<rect x="5" y="11" width="14" height="9.5" rx="2"/><path d="M8.5 11V8a3.5 3.5 0 0 1 7 0v3"/>',
+  chev: '<path d="m9.5 6 6 6-6 6"/>',
+  lupa: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+  mail: '<rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/>',
+  sol: '<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/>',
+  luna: '<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>',
+  chispa: '<path d="M11 3l1.9 5.6L18.5 10.5 12.9 12.4 11 18l-1.9-5.6L3.5 10.5 9.1 8.6z"/><path d="M18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/>',
+  cocino: '<path d="M5 11h14v5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z"/><path d="M3.5 11h17M9 7c0-1.2 1-1.5 1-2.6M13 7c0-1.2 1-1.5 1-2.6"/>',
+  mensajes: '<path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H10l-4.5 4v-4h0A1.5 1.5 0 0 1 4 14.5z"/><path d="M8 9h8M8 12h5"/>',
+  lugar: '<path d="M12 21s-6.5-5.7-6.5-11a6.5 6.5 0 0 1 13 0c0 5.3-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>',
+  detective: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8M8 10.5l1.8 1.8L13 8.8"/>',
+  carrito: '<path d="M3.5 4.5h2.2l2 10h9.6l1.9-7.5H6.6"/><circle cx="9.5" cy="19" r="1.4"/><circle cx="16.5" cy="19" r="1.4"/>',
+  informe: '<path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"/><path d="M14 3.5V8h4M9 14h2l1-2.5 1.5 4 1-1.5H16"/>',
+  etiqueta: '<path d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2"/><path d="M8 9h8M8 12h8M8 15h5"/>',
+  intestino: '<path d="M12 21v-8"/><path d="M12 13c0-3.5-2.5-6-6-6 0 3.5 2.5 6 6 6z"/><path d="M12 15c0-3 2-5.5 6-5.5 0 3.2-2.2 5.5-6 5.5z"/>'
+};
+function svg(n) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICO[n] || '') + '</svg>'; }
+
+/* ================== PERFIL, PAÍS Y ACCESO ================== */
+function perfil() { return LS.get('perfil', null); }
+function esAR() { var p = perfil(); return !p || p.pais === 'AR'; }
+function porPais(html) {
+  var ar = esAR();
+  return String(html || '')
+    .replace(/\[AR\]([\s\S]*?)\[\/AR\]/g, ar ? '$1' : '')
+    .replace(/\[OTRO\]([\s\S]*?)\[\/OTRO\]/g, ar ? '' : '$1');
+}
+
+/* ================== TAMAÑO DE LETRA ================== */
+function aplicarLetra() { document.documentElement.setAttribute('data-letra', String(LS.get('letra', 0))); }
+function cambiarLetra() {
+  var n = (LS.get('letra', 0) + 1) % 3; LS.set('letra', n); aplicarLetra();
+  aviso(['Letra normal', 'Letra grande', 'Letra muy grande'][n]);
+}
+aplicarLetra();
+
+/* ================== CAPAS Y BOTÓN "ATRÁS" ================== */
+var pila = [];
+function apilar(fnCerrar) { pila.push(fnCerrar); try { history.pushState({ capa: pila.length }, ''); } catch (e) {} }
+function volver() { if (pila.length) history.back(); }
+var ignorarPop = false;
+window.addEventListener('popstate', function () {
+  if (ignorarPop) { ignorarPop = false; return; }
+  var f = pila.pop(); if (f) f();
+});
+function cerrarTodo() {
+  var n = pila.length; if (!n) return;
+  pila.length = 0; pilaLector.length = 0; pintarLector();
+  velo.hidden = true; hoja.innerHTML = ''; document.body.classList.remove('fijo');
+  ignorarPop = true; history.go(-n);
+}
+
+var lector = $('#lector'), lectorCuerpo = $('#lectorCuerpo');
+var pilaLector = [];
+function abrirLector(html, montar) {
+  pilaLector.push({ html: html, montar: montar });
+  pintarLector();
+  apilar(function () { pilaLector.pop(); pintarLector(); });
+}
+function pintarLector() {
+  var top = pilaLector[pilaLector.length - 1];
+  if (!top) { lector.hidden = true; lectorCuerpo.innerHTML = ''; document.body.classList.remove('fijo'); return; }
+  lectorCuerpo.innerHTML = top.html;
+  lector.hidden = false; document.body.classList.add('fijo'); lector.scrollTop = 0;
+  if (top.montar) top.montar(lectorCuerpo);
+}
+$('#btnVolver').addEventListener('click', volver);
+$('#btnLetra').addEventListener('click', cambiarLetra);
+
+var velo = $('#velo'), hoja = $('#hoja');
+function abrirHoja(html, montar) {
+  hoja.innerHTML = '<button class="cerrar" aria-label="Cerrar" data-cerrar>×</button>' + html;
+  velo.hidden = false; document.body.classList.add('fijo');
+  if (montar) montar(hoja);
+  apilar(function () {
+    velo.hidden = true; hoja.innerHTML = '';
+    if (lector.hidden) document.body.classList.remove('fijo');
+  });
+}
+velo.addEventListener('click', function (e) { if (e.target === velo || e.target.closest('[data-cerrar]')) volver(); });
+
+var toastT;
+function aviso(t) {
+  var el = $('#toast'); el.textContent = t; el.hidden = false;
+  clearTimeout(toastT); toastT = setTimeout(function () { el.hidden = true; }, 2600);
+}
+
+/* ================== BUSCAR EN INTERNET ================== */
+function buscarEnInternet(q, literal) {
+  q = String(q || '').trim(); if (!q) return;
+  var n = norm(q);
+  if (!literal && n.indexOf('celia') < 0 && n.indexOf('gluten') < 0 && n.indexOf('tacc') < 0) q += ' celiaquía';
+  window.open('https://www.google.com/search?q=' + encodeURIComponent(q), '_blank', 'noopener');
+}
+function abrirDuda() {
+  abrirHoja(
+    '<h2>¿Otra duda?</h2>' +
+    '<p>Si no encontraste la respuesta en la app, buscala en internet. Se abre en tu navegador y la app queda acá, esperándote.</p>' +
+    '<label class="et" for="qDuda">Escribí tu duda</label>' +
+    '<input id="qDuda" class="campo" type="search" enterkeyhint="search" placeholder="Ej.: ¿el fernet es apto?">' +
+    '<button class="btn maiz ancho" id="btnQDuda">' + svg('lupa') + ' Buscar en internet</button>' +
+    '<button class="btn sec ancho" data-tool="ia" style="margin-top:.6rem">Preguntale a una IA</button>' +
+    '<div class="alerta" style="margin-top:1.2rem">Si tenés síntomas fuertes, no esperes una respuesta de internet: llamá a tu médico o andá a la guardia.</div>' +
+    (MAIL ? '<a class="fila" style="padding-left:0" href="mailto:' + esc(MAIL) + '?subject=' + encodeURIComponent('Consulta app Mi Mundo Sin Gluten') + '">' + svg('mail') + '<span class="txt"><span class="t">Escribime</span><span class="r">' + esc(MAIL) + '</span></span></a>' : ''),
+    function (h) {
+      var inp = $('#qDuda', h);
+      function ir() { if (inp.value.trim()) buscarEnInternet(inp.value); else inp.focus(); }
+      $('#btnQDuda', h).addEventListener('click', ir);
+      inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') ir(); });
+    }
+  );
+}
+$('#btnDuda').addEventListener('click', abrirDuda);
+
+/* ================== NOVEDADES (campanita) ================== */
+function novedadesVisibles() {
+  var h = hoyISO();
+  return C.novedades.filter(function (n) { return !n.fecha || n.fecha <= h; })
+    .sort(function (a, b) { return a.fecha < b.fecha ? 1 : a.fecha > b.fecha ? -1 : 0; });
+}
+function novedadesSinVer() {
+  var vistas = LS.get('vistas', []);
+  return novedadesVisibles().filter(function (n) { return vistas.indexOf(n.id) < 0; });
+}
+function pintarCampana() { $('#puntoCampana').hidden = novedadesSinVer().length === 0; }
+function abrirNovedades() {
+  var lista = novedadesVisibles(), prox = proximos();
+  var html = '<div class="articulo"><h1>Novedades</h1>' +
+    (lista.length ? lista.map(function (n) {
+      return '<div class="panel"><p class="chico" style="margin:0">' + esc(fechaLinda(n.fecha)) + '</p><h3 style="margin:.2rem 0 .4rem">' + esc(n.titulo) + '</h3><p style="margin:0">' + esc(n.texto) + '</p></div>';
+    }).join('') : '<p>Todavía no hay novedades. Cuando se sume algo nuevo, lo vas a ver acá.</p>') +
+    (prox.length ? '<h2>Lo que viene</h2><div class="lista">' + prox.map(function (p) {
+      var d = diasPara(p.it.desde);
+      return '<button class="fila" data-prox="' + p.tipo + ':' + esc(p.it.id) + '"><span class="txt"><span class="t">' + esc(p.it.titulo) + '</span><span class="r">Se abre el ' + esc(fechaCorta(p.it.desde)) + ' · faltan ' + d + (d === 1 ? ' día' : ' días') + '</span></span><span class="ico">' + svg('chev') + '</span></button>';
+    }).join('') + '</div>' : '') + '</div>';
+  LS.set('vistas', lista.map(function (n) { return n.id; }));
+  pintarCampana();
+  abrirLector(html);
+  if (tabActual === 'inicio') pintarVista();
+}
+$('#btnCampana').addEventListener('click', abrirNovedades);
+
+/* ================== SEMÁFORO ================== */
+var SEM = C.semaforo.map(function (x) {
+  var toks = [norm(x[0])].concat(x[3] ? x[3].split('|').map(norm) : []);
+  return { n: x[0], e: x[1], d: x[2], toks: toks };
+});
+var TXT_ESTADO = { si: 'Sí, es apto', ojo: 'Depende: solo con sello o casero', no: 'No, tiene gluten' };
+function buscarAlimento(q) {
+  q = norm(q); if (q.length < 2) return [];
+  var res = [];
+  SEM.forEach(function (it) {
+    var s = 0;
+    it.toks.forEach(function (t) {
+      var v = 0;
+      if (t === q) v = 4;
+      else if (t.indexOf(q) === 0) v = 3;
+      else if (t.split(' ').some(function (w) { return w.indexOf(q) === 0; })) v = 2;
+      else if ((' ' + q + ' ').indexOf(' ' + t + ' ') >= 0) v = 1;
+      if (v > s) s = v;
+    });
+    if (s) res.push({ it: it, s: s });
+  });
+  res.sort(function (a, b) { return b.s - a.s; });
+  return res.slice(0, 4).map(function (r) { return r.it; });
+}
+function veredictoHTML(it) {
+  return '<div class="veredicto"><span class="sema" data-e="' + it.e + '" aria-hidden="true"><i></i><i></i><i></i></span>' +
+    '<div><strong>' + esc(it.n) + '</strong><span class="estado ' + it.e + '">' + TXT_ESTADO[it.e] + '</span><p>' + esc(it.d) + '</p></div></div>';
+}
+function pintarSemaforo(q) {
+  var cont = $('#resultados'); if (!cont) return;
+  var limpio = String(q || '').trim();
+  if (norm(limpio).length < 2) { cont.innerHTML = ''; return; }
+  var r = buscarAlimento(limpio);
+  if (r.length) { cont.innerHTML = r.map(veredictoHTML).join(''); return; }
+  cont.innerHTML = '<div class="sinres"><p><strong>No tengo "' + esc(limpio) + '" en la lista todavía.</strong></p>' +
+    '<p>Si es un producto envasado, la regla es simple: solo con sello.</p>' +
+    '<button class="btn maiz ancho" data-buscar="¿' + esc(limpio) + ' tiene gluten?" data-literal="1">' + svg('lupa') + ' Buscarlo en internet</button></div>';
+}
+
+/* ================== FILAS ================== */
+function fila(it, tipo) {
+  if (!it) return '';
+  return '<button class="fila" data-tipo="' + tipo + '" data-id="' + esc(it.id) + '">' +
+    '<span class="txt"><span class="t">' + esc(it.titulo) + (esNuevo(it) ? '<span class="nuevo">Nuevo</span>' : '') + '</span>' + (it.resumen ? '<span class="r">' + esc(it.resumen) + '</span>' : '') + '</span>' +
+    '<span class="ico">' + svg('chev') + '</span></button>';
+}
+function filaTool(tool, titulo, resumen) {
+  return '<button class="fila" data-tool="' + tool + '">' +
+    '<span class="txt"><span class="t">' + esc(titulo) + '</span>' + (resumen ? '<span class="r">' + esc(resumen) + '</span>' : '') + '</span>' +
+    '<span class="ico">' + svg('chev') + '</span></button>';
+}
+function cab(t, p) { return '<div class="cab"><h1>' + esc(t) + '</h1>' + (p ? '<p>' + esc(p) + '</p>' : '') + '</div>'; }
+/* ================== TARJETAS DE INICIO ================== */
+function tilesHTML() {
+  var f = LS.get('inicioDieta', null);
+  var dias = f ? diasDesde(f) : null;
+  var tit = dias == null ? 'Mi intestino, mes a mes' : (dias <= 0 ? 'Hoy empezás' : 'Llevás ' + dias + (dias === 1 ? ' día' : ' días'));
+  var sub = dias == null ? 'Contá tus días y mirá cómo suele ir la recuperación.' : 'cuidando tu intestino. Mirá tu camino.';
+  return '<div class="tiles">' +
+    '<button class="tile" data-tool="etiqueta"><span class="ti">' + svg('etiqueta') + '</span><b>Revisá una etiqueta</b><span class="s">Pegá los ingredientes y te marco dónde está el gluten.</span></button>' +
+    '<button class="tile dia" data-tool="intestino"><span class="ti">' + svg('intestino') + '</span><b>' + esc(tit) + '</b><span class="s">' + esc(sub) + '</span></button></div>';
+}
+var FECHA_SORPRESAS = '2026-10-07';
+var SORPRESAS = [
+  ['ia', 'chispa', 'Preguntale a una IA', 'Escribí tu duda o elegí una sugerida y te llevo a una IA con la pregunta ya escrita.', 'ancha'],
+  ['cocino', 'cocino', '¿Qué cocino hoy?', 'Marcá lo que tenés y te digo qué preparar.'],
+  ['mensajes', 'mensajes', 'Mensajes listos', 'Para avisar que tenés celiaquía, sin dar vueltas.'],
+  ['lugar', 'lugar', '¿Es seguro este lugar?', 'Medí qué tan confiable es un restaurante antes de ir.'],
+  ['detective', 'detective', 'Detective del gluten', 'Si algo te cayó mal, encontrá de dónde vino.'],
+  ['super', 'carrito', 'Súper con semáforo', 'Tu lista de compras con el semáforo en cada cosa.'],
+  ['informe', 'informe', 'Informe para tu médico', 'Tu diario convertido en un resumen para la consulta.']
+];
+function sorpresasHTML() {
+  var nuevo = diasDesde(FECHA_SORPRESAS) <= 30;
+  return '<section class="bloque" style="margin-top:.4rem"><h2>Sorpresas para tu día a día</h2><div class="tiles" style="margin-top:.6rem">' +
+    SORPRESAS.map(function (x) {
+      return '<button class="tile mini' + (x[4] ? ' ' + x[4] : '') + '" data-tool="' + x[0] + '"><span class="ti">' + svg(x[1]) + '</span>' +
+        '<b>' + esc(x[2]) + (nuevo ? '<span class="nuevo">Nuevo</span>' : '') + '</b><span class="s">' + esc(x[3]) + '</span>' +
+        '</button>';
+    }).join('') + '</div></section>';
+}
+function proxCardHTML() {
+  var p = proximos()[0]; if (!p) return '';
+  var d = diasPara(p.it.desde);
+  return '<button class="prox" data-prox="' + p.tipo + ':' + esc(p.it.id) + '">' +
+    '<span class="prox-top"><span class="prox-n">' + d + '</span><span class="prox-l">' + (d === 1 ? 'día' : 'días') + ' para que se abra<br>el ' + esc(fechaCorta(p.it.desde)) + '</span></span>' +
+    '<b class="prox-t">' + esc(p.it.titulo) + '</b><span class="prox-s">' + esc(p.it.resumen || '') + '</span>' +
+    '<span class="prox-c">Es parte de tu app. Se abre solo ese día.</span></button>';
+}
+
+/* ================== INSTALAR ================== */
+var eventoInstalar = null;
+var esIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+var esAndroid = /android/i.test(navigator.userAgent);
+var instalada = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); eventoInstalar = e; });
+window.addEventListener('appinstalled', function () {
+  eventoInstalar = null; instalada = true; LS.set('iosOk', true);
+  aviso('¡Listo! La app quedó instalada.');
+  if (tabActual === 'inicio' || tabActual === 'cosas') pintarVista();
+});
+function instalarHTML() {
+  if (instalada || LS.get('iosOk', false)) return '';
+  return '<div class="instalar"><p><strong>Tenela a mano.</strong> Instalala y entrá con un toque desde la pantalla de inicio, como cualquier app.</p>' +
+    '<button class="btn prim ancho" data-tool="instalar">Instalar la aplicación</button>' +
+    '<button class="link-chico" data-tool="iosOk">Ya la instalé</button></div>';
+}
+var PASOS_INSTALAR = {
+  ios: ['En iPhone o iPad', ['Abrí esta página en <strong>Safari</strong>.', 'Tocá el botón <strong>Compartir</strong> (el cuadrado con la flecha hacia arriba). Si no lo ves, tocá antes los tres puntitos <strong>···</strong>.', 'Elegí <strong>Agregar a inicio</strong>. Si no aparece, deslizá la lista hacia abajo o tocá <strong>Ver más</strong>.', 'Dejá activada la opción <strong>Abrir como app web</strong> y tocá <strong>Agregar</strong>.']],
+  android: ['En Android', ['Abrí esta página en <strong>Chrome</strong>.', 'Tocá los tres puntos <strong>⋮</strong> de arriba a la derecha.', 'Elegí <strong>Instalar app</strong> o <strong>Agregar a la pantalla principal</strong>.', 'Confirmá con <strong>Instalar</strong>.']],
+  pc: ['En la computadora', ['Abrí esta página en <strong>Chrome</strong> o <strong>Edge</strong>.', 'Buscá el ícono de instalar al final de la barra de direcciones (una pantallita con una flecha).', 'Si no lo ves, abrí el menú del navegador <strong>⋮</strong> y elegí <strong>Instalar</strong> o <strong>Instalar app</strong>.', 'Confirmá con <strong>Instalar</strong>.']]
+};
+function pasosHTML(k) {
+  return '<ol class="pasos">' + PASOS_INSTALAR[k][1].map(function (x) { return '<li><span>' + x + '</span></li>'; }).join('') + '</ol>';
+}
+function abrirInstalar() {
+  if (instalada) {
+    abrirHoja('<h2>Ya la tenés instalada</h2><p>Estás usando la app instalada. Para abrirla, buscá el ícono <strong>Mi Mundo</strong> en la pantalla de inicio.</p><button class="btn prim ancho" data-cerrar>Seguir</button>');
+    return;
+  }
+  if (eventoInstalar) {
+    var ev = eventoInstalar; ev.prompt();
+    ev.userChoice.then(function (r) { eventoInstalar = null; if (r && r.outcome === 'accepted') LS.set('iosOk', true); pintarVista(); });
+    return;
+  }
+  var plat = esIOS ? 'ios' : (esAndroid ? 'android' : 'pc');
+  var otros = ['ios', 'android', 'pc'].filter(function (k) { return k !== plat; });
+  abrirHoja(
+    '<h2>Instalar la aplicación</h2><p>Se instala en un minuto, sin ir a ninguna tienda. Después la abrís desde la pantalla de inicio, como cualquier app.</p>' +
+    '<h3>' + PASOS_INSTALAR[plat][0] + '</h3>' + pasosHTML(plat) +
+    '<p class="chico">Si ves palabras un poco distintas, buscá una opción parecida: cambian según el celular y la versión.</p>' +
+    otros.map(function (k) { return '<details class="preg" style="margin-top:.6rem;border:1px solid var(--linea);border-radius:14px"><summary>' + PASOS_INSTALAR[k][0] + '</summary><div style="padding:0 1rem">' + pasosHTML(k) + '</div></details>'; }).join('') +
+    '<button class="btn sec ancho" data-tool="iosOk" data-cerrar style="margin-top:1rem">Ya la instalé</button>'
+  );
+}
+
+/* ================== DÍA Y NOCHE ================== */
+var mqOscuro = window.matchMedia('(prefers-color-scheme: dark)');
+function temaGuardado() { var t = LS.get('tema', 'auto'); return (t === 'dia' || t === 'noche') ? t : 'auto'; }
+function esNoche() { var t = temaGuardado(); return t === 'noche' || (t === 'auto' && mqOscuro.matches); }
+function aplicarTema() {
+  document.documentElement.setAttribute('data-tema', temaGuardado());
+  var noche = esNoche();
+  var m = document.querySelector('meta[name="theme-color"]'); if (m) m.setAttribute('content', noche ? '#0F1713' : '#EDF2E8');
+  var b = $('#btnTema');
+  if (b) { b.innerHTML = svg(noche ? 'sol' : 'luna'); b.setAttribute('aria-label', noche ? 'Cambiar a modo día' : 'Cambiar a modo noche'); }
+}
+function elegirTema(t) { LS.set('tema', t); aplicarTema(); if (tabActual === 'cosas') pintarVista(); }
+$('#btnTema').addEventListener('click', function () {
+  var n = !esNoche(); elegirTema(n ? 'noche' : 'dia'); aviso(n ? 'Modo noche' : 'Modo día');
+});
+if (mqOscuro.addEventListener) mqOscuro.addEventListener('change', aplicarTema); else if (mqOscuro.addListener) mqOscuro.addListener(aplicarTema);
+function abrirTemaHoja() {
+  var t = temaGuardado();
+  abrirHoja('<h2>Modo día o noche</h2><div class="chips">' +
+    [['auto', 'Automático'], ['dia', 'Día'], ['noche', 'Noche']].map(function (x) { return '<button class="chip" data-tm="' + x[0] + '" aria-pressed="' + (x[0] === t) + '">' + x[1] + '</button>'; }).join('') +
+    '</div><p class="chico">Automático sigue lo que tenga tu celular o tu compu. El modo noche cansa menos la vista cuando hay poca luz.</p>',
+    function (h) {
+      $$('[data-tm]', h).forEach(function (c) {
+        c.addEventListener('click', function () {
+          elegirTema(c.getAttribute('data-tm'));
+          $$('[data-tm]', h).forEach(function (o) { o.setAttribute('aria-pressed', o === c ? 'true' : 'false'); });
+        });
+      });
+    });
+}
+
+/* ================== VISTAS ================== */
+var main = $('#vista');
+var tabActual = 'inicio';
+var TABS = [['inicio', 'Inicio'], ['aprender', 'Aprender'], ['comer', 'Comer'], ['vivir', 'Vivir'], ['cosas', 'Mis cosas']];
+$('#tabs').innerHTML = TABS.map(function (t) {
+  return '<button class="tab" data-tab="' + t[0] + '">' + svg(t[0]) + '<span>' + t[1] + '</span></button>';
+}).join('');
+$$('.tab').forEach(function (b) { b.addEventListener('click', function () { ir(b.getAttribute('data-tab')); }); });
+
+function ir(tab) {
+  tabActual = tab;
+  $$('.tab').forEach(function (b) { if (b.getAttribute('data-tab') === tab) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
+  pintarVista();
+  window.scrollTo(0, 0);
+}
+function pintarVista() { VISTAS[tabActual](); pintarCampana(); }
+
+var VISTAS = {
+  inicio: function () {
+    var p = perfil() || {};
+    var tarjeta = C.tarjetas.length ? C.tarjetas[diaDelAnio() % C.tarjetas.length] : '';
+    var nuevas = novedadesSinVer();
+    var previo = $('#busca') ? $('#busca').value : '';
+    main.innerHTML =
+      '<section class="saludo"><h1>Hola' + (p.nombre ? ', ' + esc(p.nombre) : '') + '</h1><p>¿Qué querés saber hoy?</p></section>' +
+      '<section class="consulta" aria-labelledby="tCons"><h2 id="tCons">¿Puedo comer…?</h2>' +
+      '<label class="ayuda" for="busca">Escribí un alimento y te digo si es apto.</label>' +
+      '<input id="busca" class="buscador" type="search" placeholder="Ej.: yerba, queso, polenta" autocomplete="off" enterkeyhint="search">' +
+      '<div id="resultados" class="resultados" aria-live="polite"></div>' +
+      '<p class="leyenda"><span><i class="pun si"></i>Apto</span><span><i class="pun ojo"></i>Solo con sello o casero</span><span><i class="pun no"></i>Tiene gluten</span></p>' +
+      '<p class="leyenda" style="margin-top:.35rem">' + (esAR() ? 'Sello: el logo oficial Sin TACC.' : 'Sello: la leyenda "sin gluten" o el sello oficial de tu país.') + '</p></section>' +
+      tilesHTML() + sorpresasHTML() +
+      (nuevas.length ? '<button class="novedad-home" data-tool="novedades"><span class="pun no"></span><span><b>Novedad: ' + esc(nuevas[0].titulo) + '</b><span class="chico">Tocá para verla</span></span></button>' : '') +
+      proxCardHTML() +
+      instalarHTML() +
+      (tarjeta ? '<section class="hoy"><h2>Para hoy</h2><p>' + esc(tarjeta) + '</p></section>' : '') +
+      '<section class="bloque"><h2>Para empezar</h2><div class="lista">' +
+      fila(byId(C.aprender, 'que-es'), 'aprender') + fila(byId(C.aprender, 'sintomas'), 'aprender') +
+      fila(byId(C.comer, 'reglas'), 'comer') + fila(byId(C.vivir, 'primeros-dias'), 'vivir') +
+      '</div></section>';
+    var inp = $('#busca');
+    inp.addEventListener('input', function () { pintarSemaforo(inp.value); });
+    if (previo) { inp.value = previo; pintarSemaforo(previo); }
+  },
+  aprender: function () {
+    main.innerHTML = cab('Aprender', 'Todo lo que necesitás saber sobre la celiaquía.') +
+      '<div class="lista">' + vis(C.aprender).map(function (a) { return fila(a, 'aprender'); }).join('') + '</div>' +
+      '<section class="bloque"><h2>Dudas frecuentes</h2><div class="lista">' + C.faq.map(function (f) {
+        return '<details class="preg"><summary>' + esc(f.p) + '</summary><p>' + esc(f.r) + '</p></details>';
+      }).join('') + '</div>' +
+      '<div class="lista" style="margin-top:.8rem">' + filaTool('ia', 'Preguntale a una IA', 'Para las dudas que no están en la app.') + '</div></section>';
+  },
+  comer: function () {
+    main.innerHTML = cab('Comer', 'La dieta, menús de toda la semana y recetas.') +
+      '<div class="lista">' + filaTool('semaforo', '¿Puedo comer…?', 'Consultá cualquier alimento en el semáforo.') +
+      filaTool('etiqueta', 'Revisá una etiqueta', 'Pegá los ingredientes y te marco dónde está el gluten.') +
+      filaTool('cocino', '¿Qué cocino hoy?', 'Marcá lo que tenés y te digo qué preparar.') +
+      filaTool('super', 'Súper con semáforo', 'Tu lista de compras con el semáforo en cada cosa.') + '</div>' +
+      '<section class="bloque"><h2>La dieta sin TACC</h2><div class="lista">' + vis(C.comer).map(function (a) { return fila(a, 'comer'); }).join('') + '</div></section>' +
+      '<section class="bloque"><h2>Menús semanales</h2><div class="lista">' + vis(C.menus).map(function (m) { return fila(m, 'menu'); }).join('') + '</div></section>' +
+      '<section class="bloque"><h2>Recetas</h2><div class="lista">' + vis(C.recetas).map(function (r) { return fila(r, 'receta'); }).join('') + '</div></section>';
+  },
+  vivir: function () {
+    main.innerHTML = cab('Vivir', 'El día a día: afuera, en casa, con los chicos y con vos misma.') +
+      '<div class="lista">' + filaTool('intestino', 'Mi intestino, mes a mes', 'Contá tus días y mirá cómo suele ir la recuperación.') + '</div>' +
+      '<section class="bloque"><h2>Para cada situación</h2><div class="lista">' + vis(C.vivir).map(function (a) { return fila(a, 'vivir'); }).join('') + '</div></section>' +
+      '<section class="bloque"><h2>Para llevar en el celular</h2><div class="lista">' +
+      filaTool('mozo', 'Tarjeta para el mozo', 'Mostrala en un restaurante. En español, inglés y portugués.') +
+      filaTool('mensajes', 'Mensajes listos', 'Para avisar que tenés celiaquía, sin dar vueltas.') +
+      filaTool('lugar', '¿Es seguro este lugar?', 'Medí qué tan confiable es un restaurante antes de ir.') + '</div></section>';
+  },
+  cosas: function () {
+    main.innerHTML = cab('Mis cosas', 'Tus herramientas y tus ajustes.') +
+      '<div class="lista">' +
+      filaTool('etiqueta', 'Revisá una etiqueta', 'Pegá los ingredientes y te marco dónde está el gluten.') +
+      filaTool('intestino', 'Mi intestino, mes a mes', 'Tu camino de recuperación, día por día.') +
+      filaTool('ia', 'Preguntale a una IA', 'Tu duda ya escrita, lista para consultar.') +
+      filaTool('cocino', '¿Qué cocino hoy?', 'Marcá lo que tenés y te digo qué preparar.') +
+      filaTool('mensajes', 'Mensajes listos', 'Para avisar que tenés celiaquía, sin dar vueltas.') +
+      filaTool('lugar', '¿Es seguro este lugar?', 'Medí qué tan confiable es un restaurante antes de ir.') +
+      filaTool('detective', 'Detective del gluten', 'Si algo te cayó mal, encontrá de dónde vino.') +
+      filaTool('diario', 'Diario de síntomas', 'Anotá cómo te sentiste y descubrí qué te cae mal.') +
+      filaTool('informe', 'Informe para tu médico', 'Tu diario convertido en un resumen para la consulta.') +
+      filaTool('mozo', 'Tarjeta para el mozo', 'Para comer afuera tranquila.') +
+      filaTool('cocina', 'Revisar mi cocina', 'Una lista para dejar tu cocina segura.') +
+      filaTool('super', 'Súper con semáforo', 'Tu lista de compras con el semáforo en cada cosa.') +
+      '</div><section class="bloque"><h2>Ajustes</h2><div class="lista">' +
+      filaTool('instalar', 'Instalar la aplicación', instalada ? 'Ya la tenés instalada.' : 'Tenela en la pantalla de inicio de tu celular o de tu compu.') +
+      filaTool('tema', 'Modo día o noche', ['Automático', 'Día', 'Noche'][['auto', 'dia', 'noche'].indexOf(LS.get('tema', 'auto'))] || 'Automático') +
+      filaTool('perfil', 'Mis datos', 'Tu nombre y tu país.') +
+      filaTool('letra', 'Tamaño de la letra', ['Normal', 'Grande', 'Muy grande'][LS.get('letra', 0)]) +
+      filaTool('novedades', 'Novedades', 'Lo último que se sumó a la app.') +
+      (MAIL ? '<a class="fila" href="mailto:' + esc(MAIL) + '?subject=' + encodeURIComponent('Consulta app Mi Mundo Sin Gluten') + '"><span class="txt"><span class="t">Escribime</span><span class="r">' + esc(MAIL) + '</span></span><span class="ico">' + svg('mail') + '</span></a>' : '') +
+      filaTool('legal', 'Aviso importante', 'Sobre la información de esta app.') +
+      '</div></section>';
+  }
+};
+
+/* ================== ABRIR CONTENIDOS ================== */
+var FUENTES = { aprender: 'aprender', comer: 'comer', vivir: 'vivir', menu: 'menus', receta: 'recetas' };
+function abrirItem(tipo, id) {
+  var it = byId(C[FUENTES[tipo]] || [], id); if (!it || !visible(it)) return;
+  if (tipo === 'menu') abrirMenu(it);
+  else if (tipo === 'receta') abrirReceta(it);
+  else abrirArticulo(it);
+}
+function pieBuscar(q) {
+  return (q ? '<button class="btn sec ancho mas" data-buscar="' + esc(q) + '">' + svg('lupa') + ' Buscar más sobre esto en internet</button>' : '') +
+    '<p class="legal">Información general. No reemplaza la consulta con tu médico ni con tu nutricionista.</p>';
+}
+function abrirArticulo(it) {
+  abrirLector('<article class="articulo"><h1>' + esc(it.titulo) + '</h1>' + porPais(it.cuerpo) + pieBuscar(it.buscar) + '</article>');
+}
+function abrirMenu(m) {
+  var dias = m.dias || [];
+  var etiquetas = m.viandas ? ['Vianda', 'Colación'] : ['Desayuno', 'Almuerzo', 'Merienda', 'Cena'];
+  var guardado = LS.get('menuDia_' + m.id, null);
+  var hoy = (new Date().getDay() + 6) % 7;
+  var sel = guardado != null ? guardado : Math.min(hoy, dias.length - 1);
+  function pintarDia(cont, i) {
+    var d = dias[i];
+    $('#comidas', cont).innerHTML = etiquetas.map(function (et, k) {
+      return '<div class="comida"><b>' + et + '</b><span>' + esc(d[k + 1]) + '</span></div>';
+    }).join('');
+    $$('.chip', cont).forEach(function (c, k) { c.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
+  }
+  abrirLector(
+    '<div class="articulo"><h1>' + esc(m.titulo) + '</h1><p class="intro">' + esc(m.resumen) + '</p>' +
+    '<div class="nota">Todo lo envasado, con sello. Y recordá cocinar primero lo tuyo si en casa también se usa gluten.</div>' +
+    '<div class="chips" role="group" aria-label="Día">' + dias.map(function (d, i) { return '<button class="chip" data-dia="' + i + '">' + esc(d[0]) + '</button>'; }).join('') + '</div>' +
+    '<div class="panel" id="comidas"></div>' +
+    (m.viandas ? '<div class="nota">Mandala en un recipiente identificado, con cubiertos propios. Si se calienta en microondas, que vaya tapada.</div>' : '') +
+    '<button class="btn sec ancho mas" data-tool="compras">Ir a mi lista de compras</button>' +
+    pieBuscar('') + '</div>',
+    function (cont) {
+      pintarDia(cont, sel);
+      $$('.chip', cont).forEach(function (c) {
+        c.addEventListener('click', function () { sel = +c.getAttribute('data-dia'); LS.set('menuDia_' + m.id, sel); pintarDia(cont, sel); });
+      });
+    }
+  );
+}
+function abrirReceta(r) {
+  abrirLector(
+    '<div class="articulo"><h1>' + esc(r.titulo) + '</h1><p class="intro">' + esc(r.resumen) + '</p>' +
+    '<div class="meta"><span>Tiempo: ' + esc(r.tiempo) + '</span><span>Rinde: ' + esc(r.porciones) + '</span></div>' +
+    '<div class="nota">Todos los ingredientes envasados, con sello.</div>' +
+    '<h2>Ingredientes</h2><p class="chico">Tocá cada uno a medida que lo tengas listo.</p><div class="panel">' +
+    r.ingredientes.map(function (x) { return '<label class="check"><input type="checkbox"><span>' + esc(x) + '</span></label>'; }).join('') + '</div>' +
+    '<h2>Paso a paso</h2><ol class="pasos">' + r.pasos.map(function (x) { return '<li><span>' + esc(x) + '</span></li>'; }).join('') + '</ol>' +
+    (r.tip ? '<div class="nota"><strong>Un secreto:</strong> ' + esc(r.tip) + '</div>' : '') +
+    pieBuscar('receta ' + r.titulo + ' sin TACC') + '</div>',
+    function (cont) {
+      $$('.check input', cont).forEach(function (cb) {
+        cb.addEventListener('change', function () { cb.parentNode.classList.toggle('hecho', cb.checked); });
+      });
+    }
+  );
+}
+
+/* ================== HERRAMIENTAS ================== */
+var SINTOMAS = ['Panza hinchada', 'Dolor de panza', 'Diarrea', 'Constipación', 'Gases', 'Náuseas', 'Cansancio', 'Dolor de cabeza', 'Picazón en la piel', 'Ánimo bajo'];
+var ANIMOS = ['Muy mal', 'Mal', 'Regular', 'Bien', 'Muy bien'];
+
+function abrirDiario() {
+  abrirLector(
+    '<div class="articulo"><h1>Diario de síntomas</h1>' +
+    '<p class="intro">Anotá cómo te sentiste. Te ayuda a descubrir qué te cae mal y a llevarle información real a tu médico.</p>' +
+    '<div class="panel">' +
+    '<label class="et" for="dFecha">Fecha</label><input id="dFecha" class="campo" type="date">' +
+    '<p class="et" style="margin:0">¿Cómo te sentiste?</p><div class="chips" id="dAnimo">' +
+    ANIMOS.map(function (a, i) { return '<button class="chip" data-v="' + i + '" aria-pressed="false">' + a + '</button>'; }).join('') + '</div>' +
+    '<p class="et" style="margin:0">¿Tuviste alguno de estos síntomas?</p><div class="chips" id="dSint">' +
+    SINTOMAS.map(function (s) { return '<button class="chip" data-v="' + esc(s) + '" aria-pressed="false">' + esc(s) + '</button>'; }).join('') + '</div>' +
+    '<label class="check" style="border:0"><input type="checkbox" id="dAfuera"><span>Comí fuera de casa</span></label>' +
+    '<label class="et" for="dNota">Nota (qué comiste, dónde, algo que quieras recordar)</label>' +
+    '<textarea id="dNota" class="campo"></textarea>' +
+    '<button class="btn prim ancho" id="dGuardar">Guardar en mi diario</button></div>' +
+    '<h2>Tus registros</h2><div id="dLista"></div>' + pieBuscar('') + '</div>',
+    function (cont) {
+      $('#dFecha', cont).value = hoyISO();
+      $$('#dAnimo .chip', cont).forEach(function (c) {
+        c.addEventListener('click', function () { $$('#dAnimo .chip', cont).forEach(function (o) { o.setAttribute('aria-pressed', o === c ? 'true' : 'false'); }); });
+      });
+      $$('#dSint .chip', cont).forEach(function (c) {
+        c.addEventListener('click', function () { c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); });
+      });
+      function pintarLista() {
+        var regs = LS.get('diario', []);
+        var hace7 = new Date(); hace7.setDate(hace7.getDate() - 7);
+        var lim = hace7.getFullYear() + '-' + String(hace7.getMonth() + 1).padStart(2, '0') + '-' + String(hace7.getDate()).padStart(2, '0');
+        var ult = regs.filter(function (r) { return r.fecha > lim; });
+        var conSint = ult.filter(function (r) { return r.sint && r.sint.length; }).length;
+        $('#dLista', cont).innerHTML = regs.length ?
+          '<div class="resumen">En los últimos 7 días anotaste ' + ult.length + (ult.length === 1 ? ' día' : ' días') + ', ' + conSint + ' con síntomas.</div>' +
+          regs.slice(0, 60).map(function (r) {
+            return '<div class="registro"><div class="fecha">' + esc(fechaLinda(r.fecha)) + '</div>' +
+              (r.animo != null ? '<p class="det">Me sentí: ' + ANIMOS[r.animo].toLowerCase() + '</p>' : '') +
+              (r.sint && r.sint.length ? '<p class="det">Síntomas: ' + esc(r.sint.join(', ')) + '</p>' : '<p class="det">Sin síntomas</p>') +
+              (r.afuera ? '<p class="det">Comí fuera de casa</p>' : '') +
+              (r.nota ? '<p class="det">' + esc(r.nota) + '</p>' : '') +
+              '<div class="acc"><button class="link" data-borrar="' + r.id + '">Borrar</button></div></div>';
+          }).join('') : '<p class="chico">Todavía no anotaste nada. Tu primer registro aparece acá.</p>';
+        $$('[data-borrar]', cont).forEach(function (b) {
+          b.addEventListener('click', function () {
+            if (!confirm('¿Borrar este registro?')) return;
+            LS.set('diario', LS.get('diario', []).filter(function (r) { return String(r.id) !== b.getAttribute('data-borrar'); }));
+            pintarLista();
+          });
+        });
+      }
+      $('#dGuardar', cont).addEventListener('click', function () {
+        var an = $('#dAnimo .chip[aria-pressed="true"]', cont);
+        var reg = {
+          id: Date.now(), fecha: $('#dFecha', cont).value || hoyISO(),
+          animo: an ? +an.getAttribute('data-v') : null,
+          sint: $$('#dSint .chip[aria-pressed="true"]', cont).map(function (c) { return c.getAttribute('data-v'); }),
+          afuera: $('#dAfuera', cont).checked, nota: $('#dNota', cont).value.trim()
+        };
+        if (reg.animo === null && !reg.sint.length && !reg.nota) { aviso('Elegí cómo te sentiste o escribí una nota.'); return; }
+        var regs = LS.get('diario', []); regs.push(reg);
+        regs.sort(function (a, b) { return a.fecha < b.fecha ? 1 : a.fecha > b.fecha ? -1 : b.id - a.id; });
+        LS.set('diario', regs);
+        $$('.chip', cont).forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
+        $('#dAfuera', cont).checked = false; $('#dNota', cont).value = '';
+        pintarLista(); aviso('Guardado en tu diario');
+      });
+      pintarLista();
+    }
+  );
+}
+
+function abrirMozo() {
+  var T = C.tarjetaMozo || {};
+  var idioma = 'es';
+  abrirLector(
+    '<div class="articulo"><h1>Tarjeta para el mozo</h1><p class="intro">Mostrale esta pantalla a quien te atiende.</p>' +
+    '<div class="chips" role="group" aria-label="Idioma"><button class="chip" data-l="es">Español</button><button class="chip" data-l="en">Inglés</button><button class="chip" data-l="pt">Portugués</button></div>' +
+    '<div class="mozo" id="mozoTxt"></div></div>',
+    function (cont) {
+      function pintar() {
+        $('#mozoTxt', cont).textContent = T[idioma] || '';
+        $$('.chip', cont).forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-l') === idioma ? 'true' : 'false'); });
+      }
+      $$('.chip', cont).forEach(function (c) { c.addEventListener('click', function () { idioma = c.getAttribute('data-l'); pintar(); }); });
+      pintar();
+    }
+  );
+}
+
+function abrirCocina() {
+  abrirLector(
+    '<div class="articulo"><h1>Revisar mi cocina</h1><p class="intro">Marcá lo que ya tenés resuelto. Se guarda solo.</p>' +
+    '<div class="resumen" id="cProg"></div><div class="panel" id="cLista"></div>' + pieBuscar('cocina segura para celíacos') + '</div>',
+    function (cont) {
+      function pintar() {
+        var hechos = LS.get('cocina', []);
+        $('#cLista', cont).innerHTML = C.cocinaSegura.map(function (t, i) {
+          var ok = hechos.indexOf(i) >= 0;
+          return '<label class="check' + (ok ? ' hecho' : '') + '"><input type="checkbox" data-i="' + i + '"' + (ok ? ' checked' : '') + '><span>' + esc(t) + '</span></label>';
+        }).join('');
+        $('#cProg', cont).textContent = hechos.length === C.cocinaSegura.length ? '¡Tu cocina está lista!' : 'Llevás ' + hechos.length + ' de ' + C.cocinaSegura.length + '.';
+        $$('input', $('#cLista', cont)).forEach(function (cb) {
+          cb.addEventListener('change', function () {
+            var i = +cb.getAttribute('data-i'); var h = LS.get('cocina', []).filter(function (x) { return x !== i; });
+            if (cb.checked) h.push(i); LS.set('cocina', h); pintar();
+          });
+        });
+      }
+      pintar();
+    }
+  );
+}
+
+function etiquetaCompra(t) { var e = estadoCompra(t); return e ? '<span class="eti ' + e.e + '">' + e.txt + '</span>' : ''; }
+function abrirCompras() {
+  abrirLector(
+    '<div class="articulo"><h1>Súper con semáforo</h1><p class="intro">Cada cosa de tu lista aparece con su semáforo. Y recordá: todo lo envasado, con sello.</p>' +
+    '<div class="panel"><label class="et" for="lNuevo">Agregar algo</label><input id="lNuevo" class="campo" placeholder="Ej.: premezcla" enterkeyhint="done">' +
+    '<button class="btn prim ancho" id="lAgregar">Agregar a la lista</button></div>' +
+    '<div class="panel" id="lLista"></div>' +
+    '<button class="btn sec ancho" id="lBase">Sumar la lista básica sin TACC</button>' +
+    '<button class="btn sec ancho mas" id="lLimpiar" style="margin-top:.6rem">Borrar lo que ya compré</button>' +
+    '<button class="btn maiz ancho" id="lGuia" style="margin-top:.6rem">Ver la guía del súper, pasillo por pasillo</button></div>',
+    function (cont) {
+      function pintar() {
+        var items = LS.get('compras', []);
+        $('#lLista', cont).innerHTML = items.length ? items.map(function (x, i) {
+          return '<label class="check' + (x.h ? ' hecho' : '') + '"><input type="checkbox" data-i="' + i + '"' + (x.h ? ' checked' : '') + '><span>' + esc(x.t) + '</span>' + etiquetaCompra(x.t) + '<button class="borrar" aria-label="Quitar ' + esc(x.t) + '" data-q="' + i + '">×</button></label>';
+        }).join('') : '<p class="chico" style="margin:0">Tu lista está vacía. Agregá algo o sumá la lista básica.</p>';
+        $$('input', $('#lLista', cont)).forEach(function (cb) {
+          cb.addEventListener('change', function () { var it = LS.get('compras', []); it[+cb.getAttribute('data-i')].h = cb.checked; LS.set('compras', it); pintar(); });
+        });
+        $$('[data-q]', cont).forEach(function (b) {
+          b.addEventListener('click', function (e) { e.preventDefault(); var it = LS.get('compras', []); it.splice(+b.getAttribute('data-q'), 1); LS.set('compras', it); pintar(); });
+        });
+      }
+      function agregar() {
+        var inp = $('#lNuevo', cont); var t = inp.value.trim(); if (!t) { inp.focus(); return; }
+        var it = LS.get('compras', []); it.push({ t: t, h: false }); LS.set('compras', it); inp.value = ''; pintar();
+        var est = estadoCompra(t);
+        if (est && est.e === 'no') aviso('Ojo: "' + t + '" tiene gluten. Si lo querés apto, escribí "' + t + ' sin TACC".');
+      }
+      $('#lAgregar', cont).addEventListener('click', agregar);
+      $('#lGuia', cont).addEventListener('click', function () { abrirItem('comer', 'super'); });
+      $('#lNuevo', cont).addEventListener('keydown', function (e) { if (e.key === 'Enter') agregar(); });
+      $('#lBase', cont).addEventListener('click', function () {
+        var it = LS.get('compras', []); var ya = it.map(function (x) { return norm(x.t); });
+        C.listaBase.forEach(function (t) { if (ya.indexOf(norm(t)) < 0) it.push({ t: t, h: false }); });
+        LS.set('compras', it); pintar(); aviso('Lista básica sumada');
+      });
+      $('#lLimpiar', cont).addEventListener('click', function () {
+        LS.set('compras', LS.get('compras', []).filter(function (x) { return !x.h; })); pintar();
+      });
+      pintar();
+    }
+  );
+}
+
+function abrirLegal() {
+  abrirLector('<div class="articulo"><h1>Aviso importante</h1>' +
+    '<p>Esta app brinda información general sobre la celiaquía y la alimentación sin gluten, revisada con cuidado. No reemplaza el diagnóstico, el tratamiento ni el seguimiento de tu médico o de tu nutricionista.</p>' +
+    '<p>Las listas de alimentos son orientativas: las marcas y las recetas de los productos cambian. Verificá siempre el sello en el envase y, ante la duda, no lo consumas.</p>' +
+    '<p>Si tenés síntomas fuertes, consultá enseguida con un profesional de la salud.</p>' +
+    '<p>Tus registros (diario, listas y ajustes) se guardan solo en este celular.</p>' +
+    '<p>Cuando usás "Preguntale a una IA", tu pregunta se envía al servicio que elijas. No escribas datos personales. Las respuestas de una IA pueden tener errores y no reemplazan a tu médico.</p></div>');
+}
+
+function abrirPerfil(esBienvenida) {
+  var p = perfil() || {};
+  var html = '<h2>Mis datos</h2>' + formPerfil(p) + '<button class="btn prim ancho" id="pGuardar">Guardar</button>';
+  abrirHoja(html, function (h) {
+    $('#pGuardar', h).addEventListener('click', function () {
+      LS.set('perfil', { nombre: $('#pNombre', h).value.trim(), pais: $('#pPais', h).value });
+      volver(); pintarVista(); aviso('Datos guardados');
+    });
+  });
+}
+var PAISES = [['AR', 'Argentina'], ['UY', 'Uruguay'], ['PY', 'Paraguay'], ['CL', 'Chile'], ['BO', 'Bolivia'], ['PE', 'Perú'], ['CO', 'Colombia'], ['EC', 'Ecuador'], ['VE', 'Venezuela'], ['MX', 'México'], ['ES', 'España'], ['US', 'Estados Unidos'], ['OT', 'Otro país']];
+function formPerfil(p) {
+  return '<label class="et" for="pNombre">¿Cómo te llamás?</label><input id="pNombre" class="campo" autocomplete="given-name" value="' + esc(p.nombre || '') + '">' +
+    '<label class="et" for="pPais">¿En qué país vivís?</label><select id="pPais" class="campo">' +
+    PAISES.map(function (x) { return '<option value="' + x[0] + '"' + ((p.pais || 'AR') === x[0] ? ' selected' : '') + '>' + x[1] + '</option>'; }).join('') +
+    '</select><p class="chico">Lo uso para mostrarte cómo se identifican los productos aptos en tu país.</p>';
+}
+function abrirLetraHoja() {
+  var n = LS.get('letra', 0);
+  abrirHoja('<h2>Tamaño de la letra</h2><div class="chips">' + ['Normal', 'Grande', 'Muy grande'].map(function (t, i) {
+    return '<button class="chip" data-n="' + i + '" aria-pressed="' + (i === n) + '">' + t + '</button>';
+  }).join('') + '</div><p class="chico">También podés cambiarla dentro de cada artículo con el botón Aa.</p>', function (h) {
+    $$('.chip', h).forEach(function (c) {
+      c.addEventListener('click', function () {
+        LS.set('letra', +c.getAttribute('data-n')); aplicarLetra();
+        $$('.chip', h).forEach(function (o) { o.setAttribute('aria-pressed', o === c ? 'true' : 'false'); });
+        pintarVista();
+      });
+    });
+  });
+}
+
+/* ================== REVISÁ UNA ETIQUETA ================== */
+var SEV = { v: 0, a: 1, r: 2 };
+function normMap(s) {
+  var n = '', map = [];
+  for (var i = 0; i < s.length; i++) {
+    var d = s.charAt(i).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    for (var k = 0; k < d.length; k++) { n += d.charAt(k); map.push(i); }
+  }
+  return { n: n, map: map };
+}
+function analizarEtiqueta(texto) {
+  var ET = C.etiqueta || {};
+  var nm = normMap(texto), n = nm.n, map = nm.map, scan = n, spans = [], hall = {}, m;
+  var POS = /\b(?:sin\s+gluten|libres?\s+de\s+gluten|gluten\s*free|sin\s+tacc|no\s+contiene\s+(?:gluten|trigo|cereales)|libres?\s+de\s+trigo|sin\s+trigo)\b/g;
+  while ((m = POS.exec(n))) {
+    spans.push({ s: m.index, e: m.index + m[0].length, t: 'v' });
+    scan = scan.slice(0, m.index) + new Array(m[0].length + 1).join(' ') + scan.slice(m.index + m[0].length);
+  }
+  var claim = spans.length > 0;
+  function aplicar(lista, t) {
+    (lista || []).forEach(function (r) {
+      var re; try { re = new RegExp('\\b(?:' + r[0] + ')\\b', 'g'); } catch (e) { return; }
+      var mm;
+      while ((mm = re.exec(scan))) {
+        if (!mm[0].length) { re.lastIndex++; continue; }
+        spans.push({ s: mm.index, e: mm.index + mm[0].length, t: t });
+        if (!hall[r[1]]) hall[r[1]] = { t: t, n: r[1], d: r[2] };
+      }
+    });
+  }
+  aplicar(ET.rojo, 'r'); aplicar(ET.amarillo, 'a'); aplicar(ET.advertencias, 'r');
+  spans.sort(function (a, b) { return a.s - b.s || b.e - a.e; });
+  var merged = [];
+  spans.forEach(function (sp) {
+    var last = merged[merged.length - 1];
+    if (last && sp.s < last.e) { last.e = Math.max(last.e, sp.e); if (SEV[sp.t] > SEV[last.t]) last.t = sp.t; }
+    else merged.push({ s: sp.s, e: sp.e, t: sp.t });
+  });
+  var html = '', pos = 0;
+  merged.forEach(function (sp) {
+    var os = Math.max(map[sp.s], pos), oe = map[sp.e - 1] + 1;
+    html += esc(texto.slice(pos, os)) + '<mark class="' + sp.t + '">' + esc(texto.slice(os, oe)) + '</mark>';
+    pos = oe;
+  });
+  html += esc(texto.slice(pos));
+  var lista = Object.keys(hall).map(function (k) { return hall[k]; });
+  lista.sort(function (a, b) { return SEV[b.t] - SEV[a.t]; });
+  return {
+    html: html, hall: lista, claim: claim,
+    rojo: lista.some(function (h) { return h.t === 'r'; }),
+    amarillo: lista.some(function (h) { return h.t === 'a'; })
+  };
+}
+function resultadoEtiquetaHTML(r) {
+  var sello = porPais('[AR]el logo oficial Sin TACC[/AR][OTRO]el sello "sin gluten" de tu país[/OTRO]');
+  var e, titulo, estado, desc;
+  if (r.rojo) {
+    e = 'no'; titulo = 'Tiene gluten o no es seguro'; estado = 'No lo consumas';
+    desc = 'Marqué en rojo lo que no es apto para vos.';
+  } else if (r.amarillo) {
+    e = 'ojo'; titulo = 'Hay ingredientes dudosos'; estado = 'Solo si tiene el sello';
+    desc = 'Marqué en amarillo lo que no aclara de qué cereal viene. Si el envase no tiene ' + sello + ', no lo des por apto.';
+  } else {
+    e = 'ojo'; titulo = 'No encontré gluten en los ingredientes'; estado = 'Falta confirmar el sello';
+    desc = 'Esto no es una garantía: el producto puede contaminarse en la fábrica. Fijate que el envase tenga ' + sello + '.' +
+      (r.claim ? ' El texto dice "sin gluten", pero eso lo confirma el sello.' : '');
+  }
+  var leyenda = '<mark class="r">rojo: gluten o advertencia</mark> <mark class="a">amarillo: dudoso</mark>' + (r.claim ? ' <mark class="v">verde: dice "sin gluten"</mark>' : '');
+  return '<div class="veredicto panel"><span class="sema" data-e="' + e + '" aria-hidden="true"><i></i><i></i><i></i></span>' +
+    '<div><strong>' + esc(titulo) + '</strong><span class="estado ' + e + '">' + estado + '</span><p>' + desc + '</p></div></div>' +
+    (r.hall.length ? '<h2>Qué encontré</h2><div class="panel">' + r.hall.map(function (h) {
+      return '<div class="hallazgo"><i class="pun ' + (h.t === 'r' ? 'no' : 'ojo') + '"></i><div><strong>' + esc(h.n) + '</strong><p>' + esc(porPais(h.d)) + '</p></div></div>';
+    }).join('') + '</div>' : '') +
+    '<h2>Tu texto, marcado</h2><div class="etq-texto">' + r.html + '</div><p class="chico" style="margin-top:.6rem">' + leyenda + '</p>';
+}
+function abrirEtiqueta() {
+  abrirLector(
+    '<div class="articulo"><h1>Revisá una etiqueta</h1>' +
+    '<p class="intro">Copiá la lista de ingredientes del envase, pegala acá y te marco dónde está el gluten.</p>' +
+    '<div class="panel"><label class="et" for="eTxt">Ingredientes</label>' +
+    '<textarea id="eTxt" class="campo" rows="5" placeholder="Ej.: harina de trigo, azúcar, extracto de malta, sal. Puede contener trazas de soja."></textarea>' +
+    '<button class="btn prim ancho" id="eVer">Revisar ingredientes</button>' +
+    '<button class="btn sec ancho" id="eEj" style="margin-top:.6rem">Probar con un ejemplo</button></div>' +
+    (esIOS ? '<div class="nota"><strong>Con el iPhone no hace falta escribir:</strong> tocá el campo de arriba y elegí "Escanear texto" para apuntar la cámara a la etiqueta. Funciona en iPhone XS o más nuevos.</div>' : '') +
+    '<div id="eRes" aria-live="polite"></div>' +
+    '<div class="nota"><strong>Importante:</strong> esta revisión busca palabras con gluten en lo que pegaste. No reemplaza el sello del envase ni la opinión de tu médico.</div></div>',
+    function (cont) {
+      var txt = $('#eTxt', cont), res = $('#eRes', cont);
+      function correr(texto, cuenta) {
+        res.innerHTML = resultadoEtiquetaHTML(analizarEtiqueta(texto));
+        res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      $('#eVer', cont).addEventListener('click', function () {
+        var t = txt.value.trim();
+        if (t.length < 3) { aviso('Pegá o escribí los ingredientes primero.'); txt.focus(); return; }
+        correr(t, true);
+      });
+      $('#eEj', cont).addEventListener('click', function () {
+        txt.value = 'Harina de trigo, azúcar, aceite de girasol, extracto de malta, sal. Puede contener trazas de soja y leche.';
+        correr(txt.value, false);
+      });
+    }
+  );
+}
+
+/* ================== MI INTESTINO, MES A MES ================== */
+function vellosidadesSVG(frac) {
+  var base = 96, out = '<svg class="villi" viewBox="0 0 320 110" role="img" aria-label="Ilustración de las vellosidades del intestino" style="width:100%;height:auto;display:block">' +
+    '<rect class="b" x="0" y="' + base + '" width="320" height="14" rx="7"/>';
+  for (var i = 0; i < 10; i++) {
+    var alto = Math.max(8, 80 * frac * (0.86 + 0.14 * Math.sin(i * 1.7)));
+    out += '<rect class="v" x="' + (16 + i * 31) + '" y="' + (base - alto) + '" width="16" height="' + (alto + 6) + '" rx="8"/>';
+  }
+  return out + '</svg>';
+}
+function compartir(texto) {
+  var url = location.origin + location.pathname;
+  if (navigator.share) { navigator.share({ text: texto, url: url }).catch(function () {}); }
+  else if (navigator.clipboard) { navigator.clipboard.writeText(texto + ' ' + url).then(function () { aviso('Copiado: ya podés pegarlo en WhatsApp'); }, function () { aviso('No se pudo copiar'); }); }
+  else { aviso('Tu navegador no permite compartir desde acá.'); }
+}
+function abrirIntestino() {
+  abrirLector('', function (cont) {
+    var legal = '<p class="legal">Cada cuerpo tiene su ritmo. Los controles con tu médico son los que confirman cómo va tu recuperación.</p>';
+    function pintar() {
+      var f = LS.get('inicioDieta', null);
+      if (!f) {
+        cont.innerHTML = '<div class="articulo"><h1>Mi intestino, mes a mes</h1>' +
+          '<p class="intro">Tu intestino se recupera con el tiempo. Contá desde cuándo cuidás tu alimentación sin gluten y mirá cómo suele ir cada etapa.</p>' +
+          '<div class="panel"><label class="et" for="iFecha">¿Desde qué día hacés la dieta sin gluten?</label>' +
+          '<input id="iFecha" class="campo" type="date" max="' + hoyISO() + '">' +
+          '<p class="chico">Si recién empezás, poné la fecha de hoy. Se guarda solo en tu celular.</p>' +
+          '<button class="btn prim ancho" id="iGuardar">Empezar mi camino</button></div>' + legal + '</div>';
+        $('#iFecha', cont).value = hoyISO();
+        $('#iGuardar', cont).addEventListener('click', function () {
+          var v = $('#iFecha', cont).value;
+          if (!v) { aviso('Elegí una fecha.'); return; }
+          if (v > hoyISO()) { aviso('La fecha no puede ser futura.'); return; }
+          LS.set('inicioDieta', v); pintar(); if (tabActual === 'inicio') pintarVista();
+        });
+        return;
+      }
+      var dias = Math.max(0, diasDesde(f)), hitos = C.hitos || [];
+      var logrados = hitos.filter(function (h) { return h[0] <= dias; });
+      var sig = hitos.filter(function (h) { return h[0] > dias; })[0];
+      var reciente = logrados.filter(function (h) { return h[0] > 0 && dias - h[0] <= 3; }).pop();
+      var frac = hitos.length > 1 ? 0.18 + 0.82 * (Math.max(logrados.length, 1) - 1) / (hitos.length - 1) : 1;
+      var ruta = hitos.map(function (h) {
+        var estado = h[0] <= dias ? 'hecho' : (sig && h === sig ? 'sig' : 'bloq');
+        var cuerpo = estado === 'bloq' ? 'Se abre a los ' + h[0] + ' días. Falta' + (h[0] - dias === 1 ? ' 1 día.' : 'n ' + (h[0] - dias) + ' días.') : esc(h[2]);
+        return '<li class="hito ' + estado + '"><span class="pto">' + (estado === 'hecho' ? '✓' : '') + '</span><div><h3>' + esc(h[1]) + '</h3><p>' + cuerpo + '</p></div></li>';
+      }).join('');
+      cont.innerHTML = '<div class="articulo"><h1>Mi intestino, mes a mes</h1>' +
+        '<div class="dia-grande"><span class="n">' + dias + '</span><span class="t">' + (dias === 1 ? 'día' : 'días') + ' cuidando<br>tu intestino</span></div>' +
+        (reciente ? '<div class="festejo"><strong>¡Llegaste a ' + esc(reciente[1]) + '!</strong><br>' + esc(reciente[2]) + '</div>' : '') +
+        '<div class="panel">' + vellosidadesSVG(frac) +
+        '<p class="chico" style="margin:.7rem 0 0">Ilustración orientativa: así suelen ir recuperándose las vellosidades del intestino, que absorben los nutrientes.</p></div>' +
+        (sig ? '<div class="nota">Tu próximo hito: <strong>' + esc(sig[1]) + '</strong>, dentro de ' + (sig[0] - dias) + (sig[0] - dias === 1 ? ' día.' : ' días.') + '</div>' : '<div class="nota">Llegaste a todos los hitos. ¡Seguí así!</div>') +
+        '<h2>Tu camino</h2><ol class="ruta">' + ruta + '</ol>' +
+        '<button class="btn maiz ancho" id="iComp">Compartir mi progreso</button>' +
+        '<button class="btn sec ancho" id="iCambiar" style="margin-top:.6rem">Cambiar la fecha de inicio</button>' + legal + '</div>';
+      $('#iComp', cont).addEventListener('click', function () {
+        compartir(dias === 0 ? 'Hoy empecé mi camino sin gluten 💚 Estoy usando la app Mi Mundo Sin Gluten.' : 'Llevo ' + dias + (dias === 1 ? ' día' : ' días') + ' cuidando mi intestino sin gluten 💚 Estoy usando la app Mi Mundo Sin Gluten.');
+      });
+      $('#iCambiar', cont).addEventListener('click', function () { LS.set('inicioDieta', null); pintar(); if (tabActual === 'inicio') pintarVista(); });
+    }
+    pintar();
+  });
+}
+
+/* ================== PRÓXIMAMENTE ================== */
+function abrirProximo(clave) {
+  var parte = String(clave).split(':'), tipo = parte[0], id = parte.slice(1).join(':');
+  var it = byId(C[FUENTES[tipo]] || [], id); if (!it) return;
+  var d = diasPara(it.desde);
+  if (d <= 0) { abrirItem(tipo, id); return; }
+  abrirHoja(
+    '<h2>' + esc(it.titulo) + '</h2>' +
+    '<div class="cuenta"><span class="n">' + d + '</span><span>' + (d === 1 ? 'día' : 'días') + ' para que se abra<br>el ' + esc(fechaCorta(it.desde)) + '</span></div>' +
+    '<p>' + esc(it.adelanto || it.resumen || '') + '</p>' +
+    (it.incluye && it.incluye.length ? '<h3>Qué vas a encontrar</h3><ul>' + it.incluye.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '') +
+    '<div class="nota">Es parte de tu app. Se abre solo ese día, sin que hagas nada, y la campanita te avisa.</div>'
+  );
+}
+
+/* ================== HERRAMIENTAS NUEVAS ================== */
+function copiaVieja(t) {
+  var ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); aviso('Copiado'); } catch (e) { aviso('No se pudo copiar'); }
+  document.body.removeChild(ta);
+}
+function copiarTexto(t) {
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { aviso('Copiado'); }, function () { copiaVieja(t); });
+  else copiaVieja(t);
+}
+function whatsapp(t) { window.open('https://wa.me/?text=' + encodeURIComponent(t), '_blank', 'noopener'); }
+function fechaDM(iso) { var p = String(iso).split('-'); return p.length === 3 ? (+p[2]) + '/' + (+p[1]) : iso; }
+
+/* ---------- 1. ¿Qué cocino hoy? ---------- */
+var HELADERA = C.heladera || [], IDEAS = C.ideas || [];
+function nombreIng(k) { for (var i = 0; i < HELADERA.length; i++) if (HELADERA[i][0] === k) return HELADERA[i][1]; return k; }
+function evaluarIdeas(t) {
+  return IDEAS.map(function (it) {
+    var falta = it.ing.filter(function (k) { return t.indexOf(k) < 0; });
+    var extra = (it.opc || []).filter(function (k) { return t.indexOf(k) >= 0; }).length;
+    return { it: it, falta: falta, extra: extra, base: it.ing.length - falta.length };
+  });
+}
+function filaIdea(r, nota) {
+  return '<button class="fila" data-idea="' + esc(r.it.id) + '"><span class="txt"><span class="t">' + esc(r.it.titulo) + '</span>' +
+    '<span class="r">' + esc(r.it.tiempo) + (nota ? ' · ' + esc(nota) : '') + '</span></span><span class="ico">' + svg('chev') + '</span></button>';
+}
+function abrirIdea(id) {
+  var it = byId(IDEAS, id); if (!it) return;
+  var t = LS.get('tengo', []);
+  var todos = it.ing.concat(it.opc || []);
+  var faltan = todos.filter(function (k) { return t.indexOf(k) < 0; });
+  abrirLector(
+    '<div class="articulo"><h1>' + esc(it.titulo) + '</h1><div class="meta"><span>Tiempo: ' + esc(it.tiempo) + '</span></div>' +
+    '<div class="nota">Todo lo envasado, con sello. El aceite y la sal los damos por sentados.</div>' +
+    '<h2>Ingredientes</h2><div class="panel"><ul style="margin:0;padding-left:1.1rem">' +
+    it.ing.map(function (k) { return '<li>' + esc(nombreIng(k)) + '</li>'; }).join('') +
+    (it.opc || []).map(function (k) { return '<li>' + esc(nombreIng(k)) + ' <span class="chico">(si tenés)</span></li>'; }).join('') +
+    '<li>Aceite y sal</li></ul></div>' +
+    '<h2>Paso a paso</h2><ol class="pasos">' + it.pasos.map(function (x) { return '<li><span>' + esc(x) + '</span></li>'; }).join('') + '</ol>' +
+    (it.tip ? '<div class="nota"><strong>Un secreto:</strong> ' + esc(it.tip) + '</div>' : '') +
+    (faltan.length ? '<button class="btn sec ancho" id="iLista">Sumar lo que me falta a mi lista de compras</button>' : '') +
+    pieBuscar('receta ' + it.titulo + ' sin TACC') + '</div>',
+    function (cont) {
+      var b = $('#iLista', cont); if (!b) return;
+      b.addEventListener('click', function () {
+        var lista = LS.get('compras', []), ya = lista.map(function (x) { return norm(x.t); });
+        faltan.forEach(function (k) { var n = nombreIng(k); if (ya.indexOf(norm(n)) < 0) lista.push({ t: n, h: false }); });
+        LS.set('compras', lista); aviso('Sumado a tu lista de compras');
+      });
+    }
+  );
+}
+function abrirCocino() {
+  abrirLector(
+    '<div class="articulo"><h1>¿Qué cocino hoy?</h1><p class="intro">Marcá lo que tenés en casa y te digo qué podés preparar, sin gluten.</p>' +
+    '<div class="chips" id="hChips" role="group" aria-label="Lo que tengo en casa"></div>' +
+    '<button class="btn maiz ancho" id="hSorp">Sorprendeme con una idea</button>' +
+    '<div id="hRes" aria-live="polite"></div>' +
+    '<p class="legal">Información general. Todo lo envasado, con sello.</p></div>',
+    function (cont) {
+      function tengo() { return LS.get('tengo', []); }
+      function pintar() {
+        var t = tengo();
+        $('#hChips', cont).innerHTML = HELADERA.map(function (h) {
+          return '<button class="chip" data-k="' + h[0] + '" aria-pressed="' + (t.indexOf(h[0]) >= 0) + '">' + esc(h[1]) + '</button>';
+        }).join('');
+        var res = $('#hRes', cont);
+        if (!t.length) { res.innerHTML = '<p class="chico" style="margin-top:1rem">Marcá lo que tengas y aparecen las ideas.</p>'; return; }
+        var ev = evaluarIdeas(t);
+        var listos = ev.filter(function (r) { return !r.falta.length; }).sort(function (a, b) { return b.extra - a.extra || (a.it.titulo < b.it.titulo ? -1 : 1); });
+        var casi = ev.filter(function (r) { return r.falta.length === 1 && r.base >= 1; }).slice(0, 6);
+        res.innerHTML =
+          (listos.length ? '<h2>Podés hacerlo ahora</h2><div class="lista">' + listos.map(function (r) { return filaIdea(r, r.extra ? 'sumás ' + r.extra + ' de tus ingredientes' : ''); }).join('') + '</div>'
+            : '<div class="nota" style="margin-top:1rem">Con eso solo, no me alcanza para un plato completo. Sumá algún ingrediente más o mirá lo que casi tenés.</div>') +
+          (casi.length ? '<h2>Casi: te falta uno</h2><div class="lista">' + casi.map(function (r) { return filaIdea(r, 'te falta: ' + nombreIng(r.falta[0]).toLowerCase()); }).join('') + '</div>' : '');
+      }
+      cont.firstElementChild.addEventListener('click', function (e) {
+        var c = e.target.closest('.chip[data-k]');
+        if (c) {
+          var k = c.getAttribute('data-k'), t = tengo(), i = t.indexOf(k);
+          if (i >= 0) t.splice(i, 1); else t.push(k);
+          LS.set('tengo', t); pintar(); return;
+        }
+        var f = e.target.closest('[data-idea]');
+        if (f) abrirIdea(f.getAttribute('data-idea'));
+      });
+      $('#hSorp', cont).addEventListener('click', function () {
+        var t = tengo(), ev = evaluarIdeas(t);
+        var pool = t.length ? ev.filter(function (r) { return !r.falta.length; }) : [];
+        if (!pool.length) pool = ev;
+        abrirIdea(pool[Math.floor(Math.random() * pool.length)].it.id);
+      });
+      pintar();
+    }
+  );
+}
+
+/* ---------- 2. Mensajes listos ---------- */
+function abrirMensajes() {
+  var MS = C.mensajes || [];
+  abrirLector(
+    '<div class="articulo"><h1>Mensajes listos</h1><p class="intro">Elegí la situación, ajustá el texto y mandalo por WhatsApp o copialo.</p>' +
+    '<div class="chips" id="mChips" role="group" aria-label="Situación"></div>' +
+    '<p class="chico" id="mCuando"></p>' +
+    '<label class="et" for="mNom">Nombre de la otra persona (opcional)</label><input id="mNom" class="campo" autocomplete="off">' +
+    '<label class="et" for="mTxt">Tu mensaje</label><textarea id="mTxt" class="campo" rows="10"></textarea>' +
+    '<p class="chico">Completá lo que está entre corchetes antes de enviarlo.</p>' +
+    '<button class="btn prim ancho" id="mWa">Enviar por WhatsApp</button>' +
+    '<button class="btn sec ancho" id="mCopiar" style="margin-top:.6rem">Copiar el mensaje</button></div>',
+    function (cont) {
+      var sel = LS.get('msgSel', MS.length ? MS[0].id : '');
+      if (!byId(MS, sel) && MS.length) sel = MS[0].id;
+      function texto() {
+        var m = byId(MS, sel); if (!m) return '';
+        var nom = $('#mNom', cont).value.trim();
+        return porPais(m.texto).replace(/\{nombre\}/g, nom ? ' ' + nom : '');
+      }
+      function pintarChips() {
+        $('#mChips', cont).innerHTML = MS.map(function (m) { return '<button class="chip" data-m="' + m.id + '" aria-pressed="' + (m.id === sel) + '">' + esc(m.titulo) + '</button>'; }).join('');
+        var m = byId(MS, sel); $('#mCuando', cont).textContent = m ? m.cuando : '';
+      }
+      function cargar() { pintarChips(); $('#mTxt', cont).value = texto(); }
+      $('#mChips', cont).addEventListener('click', function (e) {
+        var c = e.target.closest('[data-m]'); if (!c) return;
+        sel = c.getAttribute('data-m'); LS.set('msgSel', sel); cargar();
+      });
+      $('#mNom', cont).addEventListener('input', function () { $('#mTxt', cont).value = texto(); });
+      $('#mWa', cont).addEventListener('click', function () { var t = $('#mTxt', cont).value.trim(); if (t) whatsapp(t); });
+      $('#mCopiar', cont).addEventListener('click', function () { var t = $('#mTxt', cont).value.trim(); if (t) copiarTexto(t); });
+      cargar();
+    }
+  );
+}
+
+/* ---------- 3. ¿Es seguro este lugar? ---------- */
+var NIVELES = {
+  alto: { e: 'si', t: 'Confianza alta', d: 'Hay buenas señales. Igual avisá que tenés celiaquía al pedir y elegí platos simples.' },
+  medio: { e: 'ojo', t: 'Confianza media', d: 'Faltan datos. Preguntá en persona antes de pedir y elegí platos simples, sin salsas ni rebozados.' },
+  bajo: { e: 'no', t: 'Confianza baja', d: 'Mejor no arriesgar. Si no hay otra opción, comé algo antes y pedí algo natural que no se cocine en superficies compartidas, como fruta. O elegí otro lugar.' }
+};
+function calcularNivel(Q, resp) {
+  var total = 0, suma = 0, claveNo = false, claveDudosa = false;
+  Q.forEach(function (q) {
+    var r = resp[q.id]; if (r === 'na') return;
+    total += q.peso; if (r === 'si') suma += q.peso;
+    if (q.clave && r === 'no') claveNo = true;
+    if (q.clave && r === 'nose') claveDudosa = true;
+  });
+  var pct = total ? suma / total : 0;
+  if (claveNo || pct < 0.5) return 'bajo';
+  if (pct >= 0.8 && !claveDudosa) return 'alto';
+  return 'medio';
+}
+function abrirLugar() {
+  var Q = C.lugarPreguntas || [], resp = {}, nivelActual = null;
+  abrirLector(
+    '<div class="articulo"><h1>¿Es seguro este lugar?</h1><p class="intro">Antes de ir, llamá o preguntá en el lugar. Marcá lo que te respondieron y te digo qué tan confiable es.</p>' +
+    '<div class="panel"><label class="et" for="lNombre">Nombre del lugar</label><input id="lNombre" class="campo" placeholder="Ej.: Parrilla Don Pedro, Rafaela" autocomplete="off">' +
+    Q.map(function (q) {
+      return '<p class="et" style="margin:.7rem 0 .25rem">' + porPais(q.t) + '</p><div class="chips" data-q="' + q.id + '" style="margin:0 0 .3rem">' +
+        '<button class="chip" data-v="si" aria-pressed="false">Sí</button><button class="chip" data-v="nose" aria-pressed="false">No sé</button><button class="chip" data-v="no" aria-pressed="false">No</button>' +
+        (q.na ? '<button class="chip" data-v="na" aria-pressed="false">' + esc(q.na) + '</button>' : '') + '</div>';
+    }).join('') +
+    '<button class="btn prim ancho" id="lVer" style="margin-top:.8rem">Ver qué tan confiable es</button></div>' +
+    '<div id="lRes" aria-live="polite"></div><h2>Mis lugares</h2><div id="lLista"></div>' +
+    '<p class="legal">Esto resume lo que te respondieron. No es una garantía: en cada visita, avisá y confirmá cómo preparan tu plato.</p></div>',
+    function (cont) {
+      function lugares() { return LS.get('lugares', []); }
+      function pintarLista() {
+        var ls = lugares();
+        $('#lLista', cont).innerHTML = ls.length ? ls.map(function (l) {
+          var n = NIVELES[l.nivel] || NIVELES.medio;
+          return '<div class="registro"><div class="fecha">' + esc(l.nombre) + '</div>' +
+            '<p class="det"><i class="pun ' + (n.e === 'si' ? 'si' : n.e === 'ojo' ? 'ojo' : 'no') + '"></i> ' + n.t + ' · ' + esc(fechaDM(l.fecha)) + '</p>' +
+            '<div class="acc" style="justify-content:space-between"><a class="link" style="color:var(--verde)" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(l.nombre) + '">Abrir en el mapa</a>' +
+            '<button class="link" data-borrar="' + l.id + '">Borrar</button></div></div>';
+        }).join('') : '<p class="chico">Todavía no guardaste ningún lugar. Cuando evalúes uno, guardalo y armás tu lista de lugares de confianza.</p>';
+      }
+      cont.firstElementChild.addEventListener('click', function (e) {
+        var ch = e.target.closest('.chips[data-q] .chip');
+        if (ch) {
+          var g = ch.parentNode; resp[g.getAttribute('data-q')] = ch.getAttribute('data-v');
+          $$('.chip', g).forEach(function (o) { o.setAttribute('aria-pressed', o === ch ? 'true' : 'false'); });
+          return;
+        }
+        var b = e.target.closest('[data-borrar]');
+        if (b) {
+          if (!confirm('¿Borrar este lugar?')) return;
+          LS.set('lugares', lugares().filter(function (l) { return String(l.id) !== b.getAttribute('data-borrar'); })); pintarLista();
+        }
+      });
+      $('#lVer', cont).addEventListener('click', function () {
+        var falta = Q.some(function (q) { return !resp[q.id]; });
+        if (falta) { aviso('Marcá una respuesta en cada pregunta.'); return; }
+        nivelActual = calcularNivel(Q, resp); var n = NIVELES[nivelActual];
+        $('#lRes', cont).innerHTML = '<div class="veredicto panel"><span class="sema" data-e="' + n.e + '" aria-hidden="true"><i></i><i></i><i></i></span>' +
+          '<div><strong>' + n.t + '</strong><p>' + n.d + '</p></div></div>' +
+          '<button class="btn maiz ancho" id="lGuardar">Guardar en mis lugares</button>';
+        $('#lGuardar', cont).addEventListener('click', function () {
+          var nombre = $('#lNombre', cont).value.trim();
+          if (!nombre) { aviso('Escribí el nombre del lugar.'); $('#lNombre', cont).focus(); return; }
+          var ls = lugares(); ls.unshift({ id: Date.now(), nombre: nombre, nivel: nivelActual, fecha: hoyISO() });
+          LS.set('lugares', ls); pintarLista(); aviso('Guardado en Mis lugares');
+        });
+        $('#lRes', cont).scrollIntoView({ block: 'center', behavior: 'smooth' });
+      });
+      pintarLista();
+    }
+  );
+}
+
+/* ---------- 4. Súper con semáforo ---------- */
+function coincidenciaFuerte(q) {
+  q = norm(q); if (q.length < 2) return null;
+  var mejor = null, ms = 0;
+  SEM.forEach(function (it) {
+    it.toks.forEach(function (t) {
+      var v = 0;
+      if (t === q) v = 4; else if (q.length >= 3 && t.indexOf(q) === 0) v = 3;
+      if (v > ms) { ms = v; mejor = it; }
+    });
+  });
+  return mejor;
+}
+function estadoCompra(t) {
+  var n = norm(t);
+  if (/(^| )(sin tacc|sin gluten|con sello|libre de gluten)( |$)/.test(n)) return { e: 'ojo', txt: 'Con sello' };
+  var it = coincidenciaFuerte(t); if (!it) return null;
+  return { e: it.e, txt: it.e === 'si' ? 'Apto' : (it.e === 'ojo' ? 'Con sello' : 'Tiene gluten'), n: it.n };
+}
+
+/* ---------- 5. Detective del gluten escondido ---------- */
+function abrirDetective() {
+  var D = C.detective || [];
+  abrirLector(
+    '<div class="articulo"><h1>Detective del gluten escondido</h1>' +
+    '<p class="intro">Si algo te cayó mal o seguís con síntomas, repasemos las pistas más comunes. Marcá lo que te pasó en los últimos días.</p>' +
+    '<div class="panel" id="dChecks">' + D.map(function (d) {
+      return '<label class="check"><input type="checkbox" data-d="' + d[0] + '"><span>' + esc(d[1]) + '</span></label>';
+    }).join('') + '</div>' +
+    '<button class="btn prim ancho" id="dVer">Ver las pistas</button>' +
+    '<div id="dRes" aria-live="polite"></div></div>',
+    function (cont) {
+      $('#dVer', cont).addEventListener('click', function () {
+        var marc = $$('#dChecks input:checked', cont).map(function (c) { return c.getAttribute('data-d'); });
+        var res = $('#dRes', cont);
+        if (!marc.length) { aviso('Marcá al menos una opción.'); return; }
+        var sel = D.filter(function (d) { return marc.indexOf(d[0]) >= 0; });
+        res.innerHTML = '<h2>Tus pistas</h2><div class="panel">' + sel.map(function (d) {
+          return '<div class="hallazgo"><i class="pun ojo"></i><div><strong>' + esc(d[1]) + '</strong><p>' + esc(d[2]) + '</p></div></div>';
+        }).join('') + '</div>' +
+          '<div class="nota">Empezá por revisar una o dos pistas y anotá cómo te sentís en tu diario. Si pasan varias semanas con síntomas y no encontrás nada, consultá con tu médico: puede haber otra causa que se suma.</div>' +
+          '<div class="alerta"><strong>Consultá enseguida</strong> si hay vómitos que no paran, dolor fuerte, sangre en la materia fecal o señales de deshidratación.</div>' +
+          '<button class="btn sec ancho" id="dGuardar">Guardar estas pistas en mi diario</button>';
+        $('#dGuardar', cont).addEventListener('click', function () {
+          var regs = LS.get('diario', []);
+          regs.push({ id: Date.now(), fecha: hoyISO(), animo: null, sint: [], afuera: marc.indexOf('afuera') >= 0, nota: 'Detective: ' + sel.map(function (d) { return d[1]; }).join('; ') });
+          regs.sort(function (a, b) { return a.fecha < b.fecha ? 1 : a.fecha > b.fecha ? -1 : b.id - a.id; });
+          LS.set('diario', regs); aviso('Guardado en tu diario');
+        });
+        res.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      });
+    }
+  );
+}
+
+/* ---------- 6. Informe para mi médico ---------- */
+function armarInforme() {
+  var regs = LS.get('diario', []);
+  var d0 = new Date(); d0.setDate(d0.getDate() - 30);
+  var desde = d0.getFullYear() + '-' + String(d0.getMonth() + 1).padStart(2, '0') + '-' + String(d0.getDate()).padStart(2, '0');
+  var r = regs.filter(function (x) { return x.fecha >= desde; });
+  if (!r.length) return null;
+  var diasReg = {}, diasSint = {}, conteo = {}, mal = 0, fuera = 0, fueraSint = 0;
+  r.forEach(function (x) {
+    diasReg[x.fecha] = 1;
+    var tiene = x.sint && x.sint.length;
+    if (tiene) { diasSint[x.fecha] = 1; x.sint.forEach(function (s) { conteo[s] = (conteo[s] || 0) + 1; }); }
+    if (x.animo === 0 || x.animo === 1) mal++;
+    if (x.afuera) { fuera++; if (tiene) fueraSint++; }
+  });
+  var top = Object.keys(conteo).sort(function (a, b) { return conteo[b] - conteo[a]; }).slice(0, 4).map(function (s) { return s + ' (' + conteo[s] + ')'; });
+  var notas = r.filter(function (x) { return x.nota; }).slice(0, 5).map(function (x) { return '- ' + fechaDM(x.fecha) + ': ' + x.nota; });
+  var ini = LS.get('inicioDieta', null);
+  var nReg = Object.keys(diasReg).length, nSint = Object.keys(diasSint).length;
+  var texto = 'INFORME DE MI DIARIO (últimos 30 días)\n' +
+    'Del ' + fechaDM(desde) + ' al ' + fechaDM(hoyISO()) + '\n\n' +
+    'Días con registro: ' + nReg + '\nDías con síntomas: ' + nSint + '\n' +
+    (top.length ? 'Síntomas más frecuentes: ' + top.join(', ') + '\n' : '') +
+    'Registros en los que me sentí mal o muy mal: ' + mal + '\n' +
+    'Veces que comí fuera de casa: ' + fuera + (fuera ? ' (con síntomas: ' + fueraSint + ')' : '') + '\n' +
+    (ini && diasDesde(ini) >= 0 ? 'Hace ' + diasDesde(ini) + ' días que hago la dieta sin gluten.\n' : '') +
+    (notas.length ? '\nNotas recientes:\n' + notas.join('\n') + '\n' : '') +
+    '\nEs un registro personal hecho con la app Mi Mundo Sin Gluten. No es un diagnóstico.';
+  return { texto: texto, nReg: nReg, nSint: nSint, fuera: fuera, fueraSint: fueraSint };
+}
+function abrirInforme() {
+  var inf = armarInforme();
+  if (!inf) {
+    abrirLector('<div class="articulo"><h1>Informe para mi médico</h1><p class="intro">Convierto tu diario de síntomas en un resumen listo para llevar a la consulta.</p>' +
+      '<div class="nota">Todavía no hay registros de los últimos 30 días. Anotá unos días en tu diario y volvé: acá aparece el resumen.</div>' +
+      '<button class="btn prim ancho" data-tool="diario">Ir a mi diario</button></div>');
+    return;
+  }
+  var dato = (inf.fuera >= 2 && inf.fueraSint / inf.fuera >= 0.5)
+    ? '<div class="nota"><strong>Un dato para charlar con tu médico:</strong> en ' + inf.fueraSint + ' de las ' + inf.fuera + ' veces que comiste fuera de casa tuviste síntomas. No es un diagnóstico, pero ayuda a buscar el origen.</div>' : '';
+  abrirLector('<div class="articulo"><h1>Informe para mi médico</h1>' +
+    '<p class="intro">Armado con tu diario de los últimos 30 días. Podés editarlo antes de compartirlo.</p>' +
+    '<div class="resumen">' + inf.nReg + (inf.nReg === 1 ? ' día registrado, ' : ' días registrados, ') + inf.nSint + ' con síntomas.</div>' + dato +
+    '<textarea id="iTxt" class="campo" rows="14"></textarea>' +
+    '<button class="btn prim ancho" id="iWa">Enviar por WhatsApp</button>' +
+    (MAIL ? '<button class="btn sec ancho" id="iMail" style="margin-top:.6rem">Enviar por correo</button>' : '') +
+    '<button class="btn sec ancho" id="iCopiar" style="margin-top:.6rem">Copiar el informe</button>' +
+    '<p class="legal">Información de tu propio diario. No reemplaza la valoración de tu médico.</p></div>',
+    function (cont) {
+      var ta = $('#iTxt', cont); ta.value = inf.texto;
+      $('#iWa', cont).addEventListener('click', function () { whatsapp(ta.value); });
+      $('#iCopiar', cont).addEventListener('click', function () { copiarTexto(ta.value); });
+      var m = $('#iMail', cont);
+      if (m) m.addEventListener('click', function () { location.href = 'mailto:?subject=' + encodeURIComponent('Informe de mi diario de síntomas') + '&body=' + encodeURIComponent(ta.value); });
+    });
+}
+
+/* ---------- 7. Preguntale a una IA ---------- */
+function nombrePais() {
+  var p = perfil() || {}, c = p.pais || 'AR';
+  for (var i = 0; i < PAISES.length; i++) if (PAISES[i][0] === c) return c === 'OT' ? '' : PAISES[i][1];
+  return '';
+}
+function promptIA(pregunta) {
+  var pais = nombrePais();
+  return 'Tengo celiaquía' + (pais ? ' y vivo en ' + pais : '') + '. Respondeme en español, con palabras simples y basándote en fuentes médicas confiables (guías de gastroenterología y asociaciones de celíacos). Si hay algún riesgo o algo que deba confirmar, decime cuándo consultar a mi médico. Mi duda: ' + pregunta;
+}
+var IAS = [
+  { id: 'chatgpt', n: 'ChatGPT', d: 'Se abre con tu pregunta ya escrita.', url: function (p) { return 'https://chatgpt.com/?q=' + encodeURIComponent(p); } },
+  { id: 'google', n: 'IA de Google (Modo IA)', d: 'Se abre con tu pregunta ya escrita.', url: function (p) { return 'https://www.google.com/search?udm=50&q=' + encodeURIComponent(p); } },
+  { id: 'perplexity', n: 'Perplexity', d: 'Responde mostrando las fuentes, para que las puedas chequear.', url: function (p) { return 'https://www.perplexity.ai/search?q=' + encodeURIComponent(p); } },
+  { id: 'gemini', n: 'Gemini', d: 'Copiamos tu pregunta: pegala en el chat.', copiar: true, url: function () { return 'https://gemini.google.com/app'; } },
+  { id: 'claude', n: 'Claude', d: 'Copiamos tu pregunta: pegala en el chat.', copiar: true, url: function () { return 'https://claude.ai/new'; } }
+];
+function fuentesIA(pregunta) {
+  var q = function (sitio) { return 'https://www.google.com/search?q=' + encodeURIComponent(pregunta + ' site:' + sitio); };
+  if (esAR()) return [['Asociación Celíaca Argentina', q('celiaco.org.ar')], ['ACELA', q('acela.org.ar')], ['ANMAT', q('anmat.gob.ar')]];
+  var pais = nombrePais();
+  return [['Beyond Celiac', q('beyondceliac.org')], ['Celiac Disease Foundation', q('celiac.org')],
+    ['Asociación de celíacos' + (pais ? ' de ' + pais : ' de tu país'), 'https://www.google.com/search?q=' + encodeURIComponent('asociación de celíacos ' + pais + ' ' + pregunta)]];
+}
+function elegirIA(pregunta) {
+  pregunta = String(pregunta).trim().slice(0, 600);
+  var prompt = promptIA(pregunta);
+  abrirHoja(
+    '<h2>¿Dónde querés preguntar?</h2><p class="chico" style="margin:0 0 .8rem">' + esc(pregunta) + '</p>' +
+    '<div class="lista">' + IAS.map(function (x) {
+      return '<button class="fila" data-ia="' + x.id + '"><span class="txt"><span class="t">' + esc(x.n) + '</span><span class="r">' + esc(x.d) + '</span></span><span class="ico">' + svg('chev') + '</span></button>';
+    }).join('') + '</div>' +
+    '<h3>Contrastalo con asociaciones de celíacos</h3><div class="lista">' + fuentesIA(pregunta).map(function (f) {
+      return '<a class="fila" target="_blank" rel="noopener" href="' + esc(f[1]) + '"><span class="txt"><span class="t">' + esc(f[0]) + '</span><span class="r">Busca tu duda en su sitio</span></span><span class="ico">' + svg('lupa') + '</span></a>';
+    }).join('') + '</div>' +
+    '<details class="preg" style="margin-top:.9rem;border:1px solid var(--linea);border-radius:14px"><summary>Ver exactamente lo que se envía</summary><p>' + esc(prompt) + '</p></details>' +
+    '<div class="alerta"><strong>Importante:</strong> las IAs pueden equivocarse. Para estudios, medicamentos o síntomas fuertes, consultá a tu médico. Y para saber si un producto es apto, manda el sello del envase.</div>',
+    function (h) {
+      $$('[data-ia]', h).forEach(function (b) {
+        b.addEventListener('click', function () {
+          var ia = null; IAS.forEach(function (x) { if (x.id === b.getAttribute('data-ia')) ia = x; });
+          if (!ia) return;
+          if (ia.copiar) {
+            if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(prompt).then(function () { aviso('Pregunta copiada: pegala en el chat'); }, function () { copiaVieja(prompt); });
+            else copiaVieja(prompt);
+          }
+          window.open(ia.url(prompt), '_blank', 'noopener');
+        });
+      });
+    }
+  );
+}
+function abrirIA() {
+  var IA = C.preguntasIA || { temas: [], preguntas: [] };
+  abrirLector(
+    '<div class="articulo"><h1>Preguntale a una IA</h1>' +
+    '<p class="intro">Escribí tu duda o elegí una sugerida. Te llevo a una IA con la pregunta ya escrita, avisando que tenés celiaquía.</p>' +
+    '<label class="et" for="iaQ">Tu duda</label>' +
+    '<input id="iaQ" class="campo" type="search" enterkeyhint="search" autocomplete="off" placeholder="Ej.: ¿puedo comer avena?" style="margin-bottom:.6rem">' +
+    '<div class="chips" id="iaTemas" role="group" aria-label="Tema"></div>' +
+    '<h2 id="iaTit" style="font-size:1.1rem"></h2><div class="lista" id="iaSug"></div>' +
+    '<button class="btn maiz ancho" id="iaIr" style="margin-top:1rem">Elegir dónde preguntar</button>' +
+    '<p class="legal">Tu pregunta se envía al servicio que elijas. No escribas datos personales. La información de una IA no reemplaza a tu médico.</p></div>',
+    function (cont) {
+      var tema = 'todas', actual = [];
+      var inp = $('#iaQ', cont);
+      function pintar() {
+        var toks = norm(inp.value).split(' ').filter(function (t) { return t.length >= 2; }), lista, tit;
+        if (toks.length) {
+          lista = IA.preguntas.filter(function (x) { var n = norm(x[1]); return toks.every(function (t) { return n.indexOf(t) >= 0; }); });
+          tit = lista.length ? 'Dudas parecidas a la tuya' : '';
+        } else if (tema === 'todas') {
+          lista = IA.preguntas.filter(function (x) { return x[2]; }); tit = 'Las dudas que más se hacen';
+        } else {
+          lista = IA.preguntas.filter(function (x) { return x[0] === tema; });
+          IA.temas.forEach(function (t) { if (t[0] === tema) tit = t[1]; });
+        }
+        actual = lista.slice(0, 12);
+        $('#iaTit', cont).textContent = tit;
+        $('#iaTit', cont).hidden = !tit;
+        $('#iaSug', cont).hidden = !actual.length;
+        $('#iaSug', cont).innerHTML = actual.map(function (x, i) {
+          return '<button class="fila" data-i="' + i + '"><span class="txt"><span class="t" style="font-weight:500">' + esc(x[1]) + '</span></span><span class="ico">' + svg('chev') + '</span></button>';
+        }).join('');
+        $('#iaTemas', cont).innerHTML = [['todas', 'Todas']].concat(IA.temas).map(function (t) {
+          return '<button class="chip" data-t="' + t[0] + '" aria-pressed="' + (t[0] === tema && !toks.length) + '">' + esc(t[1]) + '</button>';
+        }).join('');
+      }
+      $('#iaTemas', cont).addEventListener('click', function (e) {
+        var c = e.target.closest('[data-t]'); if (!c) return;
+        tema = c.getAttribute('data-t'); inp.value = ''; pintar();
+      });
+      $('#iaSug', cont).addEventListener('click', function (e) {
+        var f = e.target.closest('[data-i]'); if (!f) return;
+        var x = actual[+f.getAttribute('data-i')]; if (!x) return;
+        inp.value = x[1]; elegirIA(x[1]);
+      });
+      inp.addEventListener('input', pintar);
+      inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') $('#iaIr', cont).click(); });
+      inp.addEventListener('focus', function () { setTimeout(function () { var t = $('#iaTemas', cont); if (t) t.scrollIntoView({ block: 'start', behavior: 'smooth' }); }, 350); });
+      $('#iaIr', cont).addEventListener('click', function () {
+        var v = inp.value.trim();
+        if (v.length < 4) { aviso('Escribí tu duda o elegí una sugerida.'); inp.focus(); return; }
+        elegirIA(v);
+      });
+      pintar();
+    }
+  );
+}
+
+/* ================== CLICS ================== */
+var TOOLS = {
+  novedades: abrirNovedades, perfil: function () { abrirPerfil(false); },
+  letra: abrirLetraHoja, legal: abrirLegal,
+  diario: abrirDiario, mozo: abrirMozo, cocina: abrirCocina, compras: abrirCompras, super: abrirCompras, etiqueta: abrirEtiqueta, intestino: abrirIntestino,
+  ia: function () { if (!velo.hidden) { volver(); setTimeout(abrirIA, 150); } else abrirIA(); },
+  cocino: abrirCocino, mensajes: abrirMensajes, lugar: abrirLugar, detective: abrirDetective, informe: abrirInforme,
+  semaforo: function () { ir('inicio'); setTimeout(function () { var b = $('#busca'); if (b) { b.focus(); b.scrollIntoView({ block: 'center' }); } }, 50); },
+  instalar: abrirInstalar, tema: abrirTemaHoja,
+  iosOk: function () { LS.set('iosOk', true); pintarVista(); }
+};
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('[data-buscar]');
+  if (b) { buscarEnInternet(b.getAttribute('data-buscar'), b.hasAttribute('data-literal')); return; }
+  var pr = e.target.closest('[data-prox]');
+  if (pr) { abrirProximo(pr.getAttribute('data-prox')); return; }
+  var t = e.target.closest('[data-tool]');
+  if (t) {
+    var tool = t.getAttribute('data-tool');
+    if (TOOLS[tool]) {
+      if (tool === 'semaforo') cerrarTodo();
+      TOOLS[tool]();
+    }
+    return;
+  }
+  var f = e.target.closest('[data-tipo]');
+  if (f) abrirItem(f.getAttribute('data-tipo'), f.getAttribute('data-id'));
+});
+
+/* ================== BIENVENIDA ================== */
+function mostrarBienvenida() {
+  var bv = $('#bienvenida');
+  bv.innerHTML = '<div class="bienvenida-in"><img class="logo" src="icon-192.png" alt="">' +
+    '<h1>Mi Mundo Sin Gluten</h1><p class="bajada">Tu guía para comer tranquila, entender la celiaquía y resolver las dudas del día a día.</p>' +
+    formPerfil({}) + '<button class="btn prim ancho" id="bEmpezar">Empezar</button></div>';
+  bv.hidden = false;
+  $('#bEmpezar', bv).addEventListener('click', function () {
+    LS.set('perfil', { nombre: $('#pNombre', bv).value.trim(), pais: $('#pPais', bv).value });
+    bv.hidden = true; bv.innerHTML = ''; ir('inicio');
+  });
+}
+
+/* ================== ARRANQUE ================== */
+aplicarTema();
+ir('inicio');
+if (!perfil()) mostrarBienvenida();
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+}
+})();
+</script>
+</body>
+</html>
