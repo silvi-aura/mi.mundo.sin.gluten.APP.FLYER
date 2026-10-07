@@ -1013,7 +1013,7 @@ CONTENIDO.lugarPreguntas = [
    [id, lo que marca la persona, la pista que recibe]
    ========================================================= */
 CONTENIDO.detective = [
-  ['nuevo', 'Probé un producto envasado nuevo o cambié de marca', 'Buscá ese envase: ¿tiene el sello? ¿dice "puede contener trazas"? Pegá sus ingredientes en "Revisá una etiqueta".'],
+  ['nuevo', 'Probé un producto envasado nuevo o cambié de marca', 'Buscá ese envase: ¿tiene el sello? ¿dice "puede contener trazas"? Sacale una foto a sus ingredientes en "Escaneá una etiqueta".'],
   ['afuera', 'Comí fuera de casa o pedí delivery', 'La contaminación cruzada en cocinas ajenas es una de las causas más frecuentes. Anotá el lugar y evaluá su confianza en "¿Es seguro este lugar?".'],
   ['cocinaron', 'Alguien cocinó para mí', 'Preguntá qué usó: aceite, utensilios, caldos, condimentos. Muchas veces el gluten estaba en un ingrediente en el que nadie pensó.'],
   ['compartidos', 'Usé la tostadora, el colador, la tabla o el aceite que también se usan con gluten', 'Son los puntos más comunes de contaminación en casa. Repasá la lista de "Revisar mi cocina".'],

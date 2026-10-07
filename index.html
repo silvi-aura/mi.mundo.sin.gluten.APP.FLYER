@@ -234,6 +234,14 @@ label.et{display:block;font-weight:500;margin-top:.2rem}
 .check .eti + .borrar{margin-left:.5rem}
 .check.hecho .eti{text-decoration:none}
 
+/* escaneá una etiqueta */
+.foto-panel .btn svg{width:1.4em;height:1.4em}
+.consejos{margin:.9rem 0 .2rem;padding-left:1.15rem;font-size:.95rem;color:var(--suave)}
+.consejos li{margin-bottom:.25rem}
+.prog{height:12px;border-radius:99px;background:var(--hoja);overflow:hidden;margin-top:1rem}
+.prog i{display:block;height:100%;width:6%;background:var(--verde);border-radius:99px;transition:width .25s}
+.mini-foto{display:block;max-width:100%;max-height:170px;margin:.9rem auto 0;border-radius:12px;border:1px solid var(--linea)}
+.link-gal{display:block;width:100%;background:none;border:0;color:var(--verde-txt);text-decoration:underline;font-size:.95rem;margin-top:.5rem;min-height:44px;cursor:pointer}
 /* revisá una etiqueta */
 mark{border-radius:5px;padding:0 3px;color:var(--tinta)}
 mark.r{background:var(--mark-r)} mark.a{background:var(--mark-a)} mark.v{background:var(--mark-v)}
@@ -265,7 +273,7 @@ mark.r{background:var(--mark-r)} mark.a{background:var(--mark-a)} mark.v{backgro
 .hito.bloq h3{color:var(--suave)}
 
 /* ---------- Hoja que sube desde abajo ---------- */
-.velo{position:fixed;inset:0;z-index:60;background:var(--velo);display:flex;align-items:flex-end;justify-content:center}
+.velo{position:fixed;inset:0;z-index:90;background:var(--velo);display:flex;align-items:flex-end;justify-content:center}
 .hoja{background:var(--sup);width:100%;max-width:560px;border-radius:24px 24px 0 0;padding:1.4rem 1.2rem calc(var(--seg-bot) + 1.4rem);max-height:92vh;overflow-y:auto;animation:sube .22s ease-out}
 .hoja h2{font-size:1.4rem;margin-bottom:.5rem}
 .hoja h3{font-size:1.08rem;margin:1.3rem 0 .2rem}
@@ -279,10 +287,12 @@ mark.r{background:var(--mark-r)} mark.a{background:var(--mark-a)} mark.v{backgro
 .bienvenida-in{max-width:460px;margin:0 auto}
 .bienvenida .logo{width:84px;height:84px;border-radius:22px;display:block;margin-bottom:1.2rem}
 .bienvenida h1{font-size:2.1rem;margin-bottom:.5rem;color:var(--verde-osc)}
+.inst-bv{background:var(--hoja);border-radius:18px;padding:1rem 1.1rem;margin:0 0 1.5rem}
+.inst-bv p{margin:0 0 .8rem;font-size:1.02rem}
 .bienvenida p.bajada{font-size:1.05rem;color:var(--suave);margin-bottom:1.6rem}
 
 /* ---------- Aviso flotante ---------- */
-.toast{position:fixed;left:50%;bottom:calc(var(--seg-bot) + 6rem);transform:translateX(-50%);background:var(--oscuro);color:#fff;padding:.7rem 1.1rem;border-radius:999px;z-index:80;font-size:.92rem;width:max-content;max-width:90vw;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(var(--seg-bot) + 6rem);transform:translateX(-50%);background:var(--oscuro);color:#fff;padding:.7rem 1.1rem;border-radius:999px;z-index:100;font-size:.92rem;width:max-content;max-width:90vw;text-align:center}
 
 @media (prefers-reduced-motion:reduce){.hoja{animation:none}}
 </style>
@@ -314,6 +324,14 @@ html.gate-on,html.gate-on body{overflow:hidden}
 #gate .g-tiny{margin:14px 0 0;font-size:14px;color:var(--suave,#56695E)}
 #gate .g-ios{display:none;margin-top:16px;padding:12px 14px;text-align:left;font-size:15px;background:var(--maiz-claro,#FFF4D6);border-left:5px solid var(--maiz,#EFB22F);border-radius:0 10px 10px 0;position:relative}
 #gate .g-ios.ver{display:block}
+#gate [hidden]{display:none!important}
+#gate .g-inst{margin:0 0 18px;padding:14px 14px 16px;background:var(--hoja,#E1ECDD);border-radius:16px;text-align:left}
+#gate .g-inst p{margin:0 0 12px;font-size:17px}
+#gate .g-btn-inst{margin-top:0;background:var(--maiz,#EFB22F);color:#1D3428}
+#gate .g-steps{margin-top:14px;font-size:16px}
+#gate .g-steps ol{margin:8px 0 0;padding-left:22px}
+#gate .g-steps li{margin-bottom:8px}
+#gate .g-steps .g-nota{margin:10px 0 0;font-size:14px;color:var(--suave,#56695E)}
 @media (prefers-reduced-motion:reduce){#gate .g-btn:active{transform:none}}
 </style>
 <div id="gate" role="dialog" aria-modal="true" aria-labelledby="gTitulo">
@@ -321,12 +339,17 @@ html.gate-on,html.gate-on body{overflow:hidden}
     <img class="g-logo" src="icon-192.png" alt="">
     <div class="g-pre">Acceso privado</div>
     <h1 id="gTitulo">Mi Mundo Sin Gluten</h1>
-    <p class="g-txt">Escribí el <b>código de acceso</b> que te mandó Silvi para entrar a tu app.</p>
+    <div class="g-inst" id="gInst">
+      <p><b>Paso 1.</b> Instalá la app en tu celular para abrirla directo desde la pantalla de inicio.</p>
+      <button class="g-btn g-btn-inst" id="gInstBtn" type="button">Instalar la aplicación</button>
+      <div class="g-steps" id="gSteps" hidden></div>
+    </div>
+    <p class="g-txt"><b id="gPaso2">Paso 2.</b> Escribí el <b>código de acceso</b> que te mandó Silvi para entrar a tu app.</p>
     <input id="gCode" type="text" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="NOMBRE-XXXXX" aria-label="Tu código de acceso">
     <button class="g-btn" id="gBtn" type="button">Entrar</button>
     <div class="g-msg" id="gMsg" role="status" aria-live="polite"></div>
     <p class="g-tiny">Tu código es personal y queda asociado a tu celular. No importa si lo escribís en mayúscula o minúscula.</p>
-    <div class="g-ios" id="gIos"><b>Si tenés iPhone:</b> primero instalá la app (tocá Compartir y después <b>Agregar a inicio</b>). Abrila desde el ícono y escribí el código ahí adentro.</div>
+    <div class="g-ios" id="gIos"><b>Si tenés iPhone:</b> una vez instalada, abrila desde el ícono y escribí el código ahí adentro. Si lo escribís en Safari, no queda guardado en la app instalada.</div>
   </div>
 </div>
 <script>
@@ -368,9 +391,27 @@ const RRH = (function () {
 })();
 const gate = document.getElementById('gate'), inp = document.getElementById('gCode'),
       btn = document.getElementById('gBtn'), msg = document.getElementById('gMsg'), ios = document.getElementById('gIos');
+const gInst = document.getElementById('gInst'), gInstBtn = document.getElementById('gInstBtn'), gSteps = document.getElementById('gSteps'), gPaso2 = document.getElementById('gPaso2');
+let evInst = null;
+const PASOS = {
+  ios: ['En iPhone o iPad', ['Abrí esta página en <b>Safari</b>.', 'Tocá el botón <b>Compartir</b> (el cuadradito con la flecha hacia arriba). Si no lo ves, tocá antes los tres puntitos.', 'Elegí <b>Agregar a inicio</b>. Si no aparece, deslizá la lista hacia abajo.', 'Dejá activada la opción <b>Abrir como app web</b> y tocá <b>Agregar</b>.', 'Abrí la app desde el ícono y escribí tu código ahí adentro.']],
+  android: ['En Android', ['Abrí esta página en <b>Chrome</b>.', 'Tocá los tres puntos <b>&#8942;</b> de arriba a la derecha.', 'Elegí <b>Instalar app</b> o <b>Agregar a la pantalla principal</b> y confirmá con <b>Instalar</b>.', 'Abrí la app desde el ícono y escribí tu código.']],
+  pc: ['En la computadora', ['Abrí esta página en <b>Chrome</b> o <b>Edge</b>.', 'Buscá el <b>ícono de instalar</b> al final de la barra de direcciones (una pantallita con una flecha), o abrí el menú <b>&#8942;</b> y elegí <b>Instalar</b>.', 'Confirmá con <b>Instalar</b> y escribí tu código en la app.']]
+};
+function ocultarInst() { gInst.hidden = true; gPaso2.hidden = true; }
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); evInst = e; });
+window.addEventListener('appinstalled', () => { evInst = null; ocultarInst(); });
+gInstBtn.addEventListener('click', () => {
+  if (evInst) { const e = evInst; e.prompt(); e.userChoice.then(r => { evInst = null; if (r && r.outcome === 'accepted') ocultarInst(); }); return; }
+  if (!gSteps.hidden) { gSteps.hidden = true; return; }
+  const k = esIOS ? 'ios' : (/android/i.test(navigator.userAgent) ? 'android' : 'pc');
+  gSteps.innerHTML = '<b>' + PASOS[k][0] + '</b><ol>' + PASOS[k][1].map(t => '<li>' + t + '</li>').join('') + '</ol><p class="g-nota">Si ves palabras un poco distintas, buscá una opción parecida: cambian según el celular.</p>';
+  gSteps.hidden = false;
+});
 const accGet = () => { try { return JSON.parse(localStorage.getItem(ACC_KEY) || 'null'); } catch (e) { return null; } };
 const esIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (/macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
 const instalada = window.navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+if (instalada) ocultarInst();
 function setMsg(t, info) { msg.textContent = t || ''; msg.className = 'g-msg ' + (t ? (info ? 'info' : 'warn') : ''); }
 function abrirGate(t) {
   gate.classList.remove('off'); document.documentElement.classList.add('gate-on');
@@ -553,6 +594,7 @@ var ICO = {
   detective: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8M8 10.5l1.8 1.8L13 8.8"/>',
   carrito: '<path d="M3.5 4.5h2.2l2 10h9.6l1.9-7.5H6.6"/><circle cx="9.5" cy="19" r="1.4"/><circle cx="16.5" cy="19" r="1.4"/>',
   informe: '<path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"/><path d="M14 3.5V8h4M9 14h2l1-2.5 1.5 4 1-1.5H16"/>',
+  camara: '<path d="M4 8.5A1.5 1.5 0 0 1 5.5 7H8l1.2-2h5.6L16 7h2.5A1.5 1.5 0 0 1 20 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5z"/><circle cx="12" cy="13" r="3.4"/>',
   etiqueta: '<path d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2"/><path d="M8 9h8M8 12h8M8 15h5"/>',
   intestino: '<path d="M12 21v-8"/><path d="M12 13c0-3.5-2.5-6-6-6 0 3.5 2.5 6 6 6z"/><path d="M12 15c0-3 2-5.5 6-5.5 0 3.2-2.2 5.5-6 5.5z"/>'
 };
@@ -741,7 +783,7 @@ function tilesHTML() {
   var tit = dias == null ? 'Mi intestino, mes a mes' : (dias <= 0 ? 'Hoy empezás' : 'Llevás ' + dias + (dias === 1 ? ' día' : ' días'));
   var sub = dias == null ? 'Contá tus días y mirá cómo suele ir la recuperación.' : 'cuidando tu intestino. Mirá tu camino.';
   return '<div class="tiles">' +
-    '<button class="tile" data-tool="etiqueta"><span class="ti">' + svg('etiqueta') + '</span><b>Revisá una etiqueta</b><span class="s">Pegá los ingredientes y te marco dónde está el gluten.</span></button>' +
+    '<button class="tile" data-tool="etiqueta"><span class="ti">' + svg('etiqueta') + '</span><b>Escaneá una etiqueta</b><span class="s">Sacale una foto a los ingredientes y te marco dónde está el gluten.</span></button>' +
     '<button class="tile dia" data-tool="intestino"><span class="ti">' + svg('intestino') + '</span><b>' + esc(tit) + '</b><span class="s">' + esc(sub) + '</span></button></div>';
 }
 var FECHA_SORPRESAS = '2026-10-07';
@@ -904,7 +946,7 @@ var VISTAS = {
   comer: function () {
     main.innerHTML = cab('Comer', 'La dieta, menús de toda la semana y recetas.') +
       '<div class="lista">' + filaTool('semaforo', '¿Puedo comer…?', 'Consultá cualquier alimento en el semáforo.') +
-      filaTool('etiqueta', 'Revisá una etiqueta', 'Pegá los ingredientes y te marco dónde está el gluten.') +
+      filaTool('etiqueta', 'Escaneá una etiqueta', 'Sacale una foto a los ingredientes y te marco dónde está el gluten.') +
       filaTool('cocino', '¿Qué cocino hoy?', 'Marcá lo que tenés y te digo qué preparar.') +
       filaTool('super', 'Súper con semáforo', 'Tu lista de compras con el semáforo en cada cosa.') + '</div>' +
       '<section class="bloque"><h2>La dieta sin TACC</h2><div class="lista">' + vis(C.comer).map(function (a) { return fila(a, 'comer'); }).join('') + '</div></section>' +
@@ -923,7 +965,7 @@ var VISTAS = {
   cosas: function () {
     main.innerHTML = cab('Mis cosas', 'Tus herramientas y tus ajustes.') +
       '<div class="lista">' +
-      filaTool('etiqueta', 'Revisá una etiqueta', 'Pegá los ingredientes y te marco dónde está el gluten.') +
+      filaTool('etiqueta', 'Escaneá una etiqueta', 'Sacale una foto a los ingredientes y te marco dónde está el gluten.') +
       filaTool('intestino', 'Mi intestino, mes a mes', 'Tu camino de recuperación, día por día.') +
       filaTool('ia', 'Preguntale a una IA', 'Tu duda ya escrita, lista para consultar.') +
       filaTool('cocino', '¿Qué cocino hoy?', 'Marcá lo que tenés y te digo qué preparar.') +
@@ -1262,7 +1304,8 @@ function analizarEtiqueta(texto) {
     amarillo: lista.some(function (h) { return h.t === 'a'; })
   };
 }
-function resultadoEtiquetaHTML(r) {
+function resultadoEtiquetaHTML(r, op) {
+  op = op || {};
   var sello = porPais('[AR]el logo oficial Sin TACC[/AR][OTRO]el sello "sin gluten" de tu país[/OTRO]');
   var e, titulo, estado, desc;
   if (r.rojo) {
@@ -1271,6 +1314,9 @@ function resultadoEtiquetaHTML(r) {
   } else if (r.amarillo) {
     e = 'ojo'; titulo = 'Hay ingredientes dudosos'; estado = 'Solo si tiene el sello';
     desc = 'Marqué en amarillo lo que no aclara de qué cereal viene. Si el envase no tiene ' + sello + ', no lo des por apto.';
+  } else if (op.foto && op.baja) {
+    e = 'ojo'; titulo = 'No pude leer bien la etiqueta'; estado = 'No te guíes por esta foto';
+    desc = 'Sacá otra foto más cerca, con buena luz y apuntando a la lista de ingredientes. O pegá los ingredientes a mano. Mientras tanto, no la des por apta: fijate que el envase tenga ' + sello + '.';
   } else {
     e = 'ojo'; titulo = 'No encontré gluten en los ingredientes'; estado = 'Falta confirmar el sello';
     desc = 'Esto no es una garantía: el producto puede contaminarse en la fábrica. Fijate que el envase tenga ' + sello + '.' +
@@ -1279,36 +1325,151 @@ function resultadoEtiquetaHTML(r) {
   var leyenda = '<mark class="r">rojo: gluten o advertencia</mark> <mark class="a">amarillo: dudoso</mark>' + (r.claim ? ' <mark class="v">verde: dice "sin gluten"</mark>' : '');
   return '<div class="veredicto panel"><span class="sema" data-e="' + e + '" aria-hidden="true"><i></i><i></i><i></i></span>' +
     '<div><strong>' + esc(titulo) + '</strong><span class="estado ' + e + '">' + estado + '</span><p>' + desc + '</p></div></div>' +
+    (op.foto ? '<div class="nota"><strong>Esto es lo que leí de tu foto.</strong> Revisá que coincida con el envase.' + (op.baja && (r.rojo || r.amarillo) ? ' La foto se leyó con poca calidad, así que puede faltar algo.' : '') + ' Si falta o está mal alguna palabra, corregila en el cuadro de abajo y tocá <b>Revisar ingredientes</b>.</div>' : '') +
     (r.hall.length ? '<h2>Qué encontré</h2><div class="panel">' + r.hall.map(function (h) {
       return '<div class="hallazgo"><i class="pun ' + (h.t === 'r' ? 'no' : 'ojo') + '"></i><div><strong>' + esc(h.n) + '</strong><p>' + esc(porPais(h.d)) + '</p></div></div>';
     }).join('') + '</div>' : '') +
-    '<h2>Tu texto, marcado</h2><div class="etq-texto">' + r.html + '</div><p class="chico" style="margin-top:.6rem">' + leyenda + '</p>';
+    '<h2>' + (op.foto ? 'Lo que leí de tu foto, marcado' : 'Tu texto, marcado') + '</h2><div class="etq-texto">' + r.html + '</div><p class="chico" style="margin-top:.6rem">' + leyenda + '</p>';
 }
+/* ---------- Lector de fotos: lee el texto de la etiqueta en el propio celular (la foto no se envía a ningún lado) ---------- */
+var CLAVES_FUZZY = ['trigo', 'avena', 'cebada', 'centeno', 'malta', 'gluten', 'harina', 'semola', 'salvado', 'espelta', 'cerveza', 'triticale', 'cuscus', 'bulgur', 'seitan'];
+function aSinTilde(t) { return String(t).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+function dist1(a, b) {
+  if (a === b) return true; var la = a.length, lb = b.length; if (Math.abs(la - lb) > 1) return false;
+  var i = 0; while (i < la && i < lb && a.charAt(i) === b.charAt(i)) i++;
+  if (la === lb) return a.slice(i + 1) === b.slice(i + 1);
+  if (la > lb) return a.slice(i + 1) === b.slice(i);
+  return b.slice(i + 1) === a.slice(i);
+}
+/* palabras que la foto pudo leer mal y que se parecen a un cereal con gluten (por ejemplo "trlgo") */
+function palabrasSospechosas(texto) {
+  var out = [], vistos = {};
+  aSinTilde(texto).split(/[^a-z]+/).forEach(function (w) {
+    if (w.length < 5 || vistos[w]) return; vistos[w] = 1;
+    for (var k = 0; k < CLAVES_FUZZY.length; k++) {
+      var c = CLAVES_FUZZY[k];
+      if (w !== c && w.charAt(0) === c.charAt(0) && dist1(w, c) && !(w.length === c.length + 1 && w.slice(0, c.length) === c)) { out.push({ leido: w, parecido: c }); break; }
+    }
+  });
+  return out;
+}
+var OCRX = { cargando: null };
+function cargarOCR() {
+  if (window.Tesseract) return Promise.resolve();
+  if (OCRX.cargando) return OCRX.cargando;
+  OCRX.cargando = new Promise(function (ok, mal) {
+    var sc = document.createElement('script'); sc.src = 'ocr/tesseract.min.js';
+    sc.onload = ok; sc.onerror = function () { OCRX.cargando = null; mal(new Error('No se pudo cargar el lector')); };
+    document.head.appendChild(sc);
+  });
+  return OCRX.cargando;
+}
+function absURL(r) { return new URL(r, location.href).href.replace(/\/$/, ''); }
+/* achica la foto, la pasa a grises y le sube el contraste para que se lea mejor */
+function prepararFoto(file) {
+  return new Promise(function (ok, mal) {
+    var url = URL.createObjectURL(file), img = new Image();
+    img.onload = function () {
+      var w = img.naturalWidth, h = img.naturalHeight, MAX = 2400, k = Math.min(1, MAX / Math.max(w, h));
+      if (Math.max(w, h) < 1300) k = 1300 / Math.max(w, h);
+      var c = document.createElement('canvas'); c.width = Math.round(w * k); c.height = Math.round(h * k);
+      var cx = c.getContext('2d', { willReadFrequently: true }); cx.drawImage(img, 0, 0, c.width, c.height);
+      try {
+        var d = cx.getImageData(0, 0, c.width, c.height), px = d.data, hist = new Array(256).fill(0), n = px.length / 4;
+        for (var q = 0; q < px.length; q += 4) { var g = (px[q] * 0.299 + px[q + 1] * 0.587 + px[q + 2] * 0.114) | 0; px[q] = g; hist[g]++; }
+        var acum = 0, lo = 0, hi = 255; for (var a = 0; a < 256; a++) { acum += hist[a]; if (acum >= n * 0.02) { lo = a; break; } }
+        acum = 0; for (var b = 255; b >= 0; b--) { acum += hist[b]; if (acum >= n * 0.02) { hi = b; break; } }
+        var rango = Math.max(40, hi - lo);
+        for (var z = 0; z < px.length; z += 4) { var v = Math.max(0, Math.min(255, ((px[z] - lo) * 255 / rango) | 0)); px[z] = px[z + 1] = px[z + 2] = v; }
+        cx.putImageData(d, 0, 0);
+      } catch (e) { }
+      ok({ canvas: c, url: url });
+    };
+    img.onerror = function () { URL.revokeObjectURL(url); mal(new Error('No se pudo abrir la foto')); };
+    img.src = url;
+  });
+}
+function leerFoto(file, onEstado) {
+  var worker = null, miniUrl = null;
+  return prepararFoto(file).then(function (pf) {
+    miniUrl = pf.url;
+    onEstado('Preparando el lector…', 4);
+    return cargarOCR().then(function () {
+      return Tesseract.createWorker('spa', 1, {
+        workerPath: absURL('ocr/worker.min.js'), corePath: absURL('ocr/core'), langPath: absURL('ocr/lang'),
+        gzip: true, workerBlobURL: false,
+        logger: function (m) {
+          if (m.status === 'recognizing text') onEstado('Leyendo la etiqueta… ' + Math.round(m.progress * 100) + '%', 20 + m.progress * 78);
+          else if (m.status && /load|initializ/.test(m.status)) onEstado('Preparando el lector…', 8 + Math.min(10, (m.progress || 0) * 10));
+        }
+      });
+    }).then(function (w) { worker = w; return worker.recognize(pf.canvas); });
+  }).then(function (r) {
+    var texto = (r.data.text || '').replace(/-\s*\n\s*/g, '').replace(/\s*\n\s*/g, ' ').replace(/\s{2,}/g, ' ').trim();
+    return { texto: texto, conf: r.data.confidence || 0, mini: miniUrl };
+  }).then(function (res) { if (worker) worker.terminate(); return res; },
+          function (err) { if (worker) { try { worker.terminate(); } catch (e) { } } throw err; });
+}
+
 function abrirEtiqueta() {
   abrirLector(
-    '<div class="articulo"><h1>Revisá una etiqueta</h1>' +
-    '<p class="intro">Copiá la lista de ingredientes del envase, pegala acá y te marco dónde está el gluten.</p>' +
-    '<div class="panel"><label class="et" for="eTxt">Ingredientes</label>' +
+    '<div class="articulo"><h1>Escaneá una etiqueta</h1>' +
+    '<p class="intro">Sacale una foto a la lista de ingredientes y te marco dónde está el gluten. También podés pegar el texto a mano.</p>' +
+    '<div class="panel foto-panel">' +
+    '<button class="btn maiz ancho" id="eFoto" type="button">' + svg('camara') + ' Sacar foto de la etiqueta</button>' +
+    '<button class="link-gal" id="eGal" type="button">O elegir una foto de la galería</button>' +
+    '<input id="eArch" type="file" accept="image/*" capture="environment" hidden>' +
+    '<input id="eArchG" type="file" accept="image/*" hidden>' +
+    '<ul class="consejos"><li>Apuntá a la <b>lista de ingredientes</b>: suele estar atrás o en el costado del envase.</li>' +
+    '<li>Buena luz, sin reflejos y bien de cerca, para que se lean las letras chicas.</li>' +
+    '<li>La foto se lee en tu celular y no se envía a ningún lado.</li></ul>' +
+    '<div id="eProg" hidden><div class="prog"><i id="eBarra"></i></div><p class="chico" id="eEstado" role="status" aria-live="polite"></p></div>' +
+    '<img id="eMini" class="mini-foto" alt="La foto que sacaste" hidden></div>' +
+    '<div class="panel"><label class="et" for="eTxt">O pegá o corregí los ingredientes</label>' +
     '<textarea id="eTxt" class="campo" rows="5" placeholder="Ej.: harina de trigo, azúcar, extracto de malta, sal. Puede contener trazas de soja."></textarea>' +
     '<button class="btn prim ancho" id="eVer">Revisar ingredientes</button>' +
     '<button class="btn sec ancho" id="eEj" style="margin-top:.6rem">Probar con un ejemplo</button></div>' +
-    (esIOS ? '<div class="nota"><strong>Con el iPhone no hace falta escribir:</strong> tocá el campo de arriba y elegí "Escanear texto" para apuntar la cámara a la etiqueta. Funciona en iPhone XS o más nuevos.</div>' : '') +
     '<div id="eRes" aria-live="polite"></div>' +
-    '<div class="nota"><strong>Importante:</strong> esta revisión busca palabras con gluten en lo que pegaste. No reemplaza el sello del envase ni la opinión de tu médico.</div></div>',
+    '<div class="nota"><strong>Importante:</strong> esta revisión busca palabras con gluten en el texto. Una foto puede leerse mal, y el producto puede contaminarse en la fábrica. No reemplaza el sello del envase ni la opinión de tu médico.</div></div>',
     function (cont) {
-      var txt = $('#eTxt', cont), res = $('#eRes', cont);
-      function correr(texto, cuenta) {
-        res.innerHTML = resultadoEtiquetaHTML(analizarEtiqueta(texto));
+      var txt = $('#eTxt', cont), res = $('#eRes', cont), prog = $('#eProg', cont), barra = $('#eBarra', cont), estado = $('#eEstado', cont), mini = $('#eMini', cont), ocupado = false;
+      function correr(texto, op) {
+        var r = analizarEtiqueta(texto);
+        if (op && op.foto) {
+          var sos = palabrasSospechosas(texto).filter(function (x) { return !r.hall.some(function (h) { return aSinTilde(h.n).indexOf(x.parecido) >= 0; }); });
+          sos.forEach(function (x) { r.hall.push({ t: 'a', n: 'Leí «' + x.leido + '»: ¿será «' + x.parecido + '»?', d: 'La foto puede haberse leído mal. Mirá esa palabra en el envase.' }); });
+          if (sos.length) r.amarillo = true;
+        }
+        res.innerHTML = resultadoEtiquetaHTML(r, op);
         res.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+      function procesar(file) {
+        if (!file || ocupado) return;
+        ocupado = true; res.innerHTML = ''; prog.hidden = false; barra.style.width = '4%'; estado.textContent = 'Preparando la foto…';
+        leerFoto(file, function (t, pct) { estado.textContent = t; barra.style.width = Math.max(4, Math.min(100, pct)) + '%'; })
+          .then(function (r) {
+            prog.hidden = true; mini.src = r.mini; mini.hidden = false; txt.value = r.texto;
+            var baja = r.texto.length < 30 || r.conf < 60;
+            correr(r.texto || ' ', { foto: true, baja: baja, conf: r.conf });
+          })
+          .catch(function () {
+            prog.hidden = true;
+            res.innerHTML = '<div class="alerta"><strong>No pude leer la foto.</strong> Probá de nuevo con buena luz y bien de cerca. Si no funciona, pegá o escribí los ingredientes en el cuadro de abajo.</div>';
+          })
+          .then(function () { ocupado = false; $('#eArch', cont).value = ''; $('#eArchG', cont).value = ''; });
+      }
+      $('#eFoto', cont).addEventListener('click', function () { $('#eArch', cont).click(); });
+      $('#eGal', cont).addEventListener('click', function () { $('#eArchG', cont).click(); });
+      $('#eArch', cont).addEventListener('change', function () { procesar(this.files && this.files[0]); });
+      $('#eArchG', cont).addEventListener('change', function () { procesar(this.files && this.files[0]); });
       $('#eVer', cont).addEventListener('click', function () {
         var t = txt.value.trim();
-        if (t.length < 3) { aviso('Pegá o escribí los ingredientes primero.'); txt.focus(); return; }
-        correr(t, true);
+        if (t.length < 3) { aviso('Sacá una foto o pegá los ingredientes primero.'); txt.focus(); return; }
+        correr(t, null);
       });
       $('#eEj', cont).addEventListener('click', function () {
         txt.value = 'Harina de trigo, azúcar, aceite de girasol, extracto de malta, sal. Puede contener trazas de soja y leche.';
-        correr(txt.value, false);
+        correr(txt.value, null);
       });
     }
   );
@@ -1859,11 +2020,16 @@ document.addEventListener('click', function (e) {
 });
 
 /* ================== BIENVENIDA ================== */
+function instalarBienvenidaHTML() {
+  if (instalada) return '';
+  return '<div class="inst-bv"><p><b>Primero, instalá la app.</b> Así la abrís con un toque desde tu pantalla de inicio, como cualquier otra.</p>' +
+    '<button class="btn prim ancho" data-tool="instalar">Instalar la aplicación</button></div>';
+}
 function mostrarBienvenida() {
   var bv = $('#bienvenida');
   bv.innerHTML = '<div class="bienvenida-in"><img class="logo" src="icon-192.png" alt="">' +
     '<h1>Mi Mundo Sin Gluten</h1><p class="bajada">Tu guía para comer tranquila, entender la celiaquía y resolver las dudas del día a día.</p>' +
-    formPerfil({}) + '<button class="btn prim ancho" id="bEmpezar">Empezar</button></div>';
+    instalarBienvenidaHTML() + formPerfil({}) + '<button class="btn prim ancho" id="bEmpezar">Empezar</button></div>';
   bv.hidden = false;
   $('#bEmpezar', bv).addEventListener('click', function () {
     LS.set('perfil', { nombre: $('#pNombre', bv).value.trim(), pais: $('#pPais', bv).value });

@@ -1,7 +1,7 @@
 /* Service worker de "Mi Mundo Sin Gluten".
    Primero busca la versión nueva en internet; si no hay conexión, usa la guardada.
    Así, cada vez que subís contenido nuevo a GitHub, le llega a todas. */
-const VERSION = 'vsg-v4';
+const VERSION = 'vsg-v6';
 const BASE = ['./', 'index.html', 'contenido.js', 'config.js', 'manifest.json', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 
 self.addEventListener('install', (e) => {
